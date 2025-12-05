@@ -54,12 +54,14 @@ function calculate4DStats(results: FourDModel[]) {
         });
     });
 
-    const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+    // Full frequency for chart
+    const frequency = sorted.map(([num, count]) => ({ number: num, count })).sort((a, b) => Number(a.number) - Number(b.number));
+
     // User requested 5 hot and 5 cold for 4D
     const hot = sorted.slice(0, 5).map(([num, count]) => ({ number: num, count }));
     const cold = sorted.slice(-5).map(([num, count]) => ({ number: num, count }));
 
-    return { hot, cold };
+    return { hot, cold, frequency };
 }
 
 function calculateTotoStats(results: TotoModel[]) {
@@ -80,10 +82,23 @@ function calculateTotoStats(results: TotoModel[]) {
     }
 
     const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+
+    // Full frequency for chart
+    const frequency = sorted.map(([num, count]) => ({ number: num, count })).sort((a, b) => Number(a.number) - Number(b.number));
+
     const hot = sorted.slice(0, 6).map(([num, count]) => ({ number: num, count }));
     const cold = sorted.slice(-6).map(([num, count]) => ({ number: num, count }));
 
-    return { hot, cold };
+    // Prize Trend (Group 1)
+    const prizeTrend = results
+        .map(res => ({
+            drawNo: res.drawNo,
+            drawDate: res.drawDate,
+            amount: res.winningShares[0]?.prizeAmount || 0
+        }))
+        .sort((a, b) => new Date(a.drawDate).getTime() - new Date(b.drawDate).getTime());
+
+    return { hot, cold, frequency, prizeTrend };
 }
 
 function calculateSweepStats(results: SweepModel[]) {

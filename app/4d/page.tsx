@@ -2,8 +2,7 @@ import { FourDResult } from "@/components/results/FourD";
 import pool from "@/lib/db";
 import { FourDModel } from "@/lib/types";
 import { getStats, Timeframe } from "@/lib/stats";
-import { formatCurrency } from "@/lib/utils";
-import { Calendar, Flame, Snowflake } from "lucide-react";
+import { FourDStats } from "@/components/stats/FourDStats";
 
 async function getLatestResult() {
     const [rows]: any = await pool.query('SELECT data FROM results WHERE type = "4D" ORDER BY draw_date DESC LIMIT 1');
@@ -70,68 +69,8 @@ export default async function FourDPage({ searchParams }: { searchParams: Promis
                     </div>
                 </section>
 
-                {/* Statistics */}
-                <section>
-                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
-                        <h2 className="text-xl font-bold text-gray-900 dark:text-white">Hot & Cold Numbers</h2>
-                        <div className="flex bg-white dark:bg-gray-800 rounded-lg p-1 shadow-sm border border-gray-200 dark:border-gray-700">
-                            {['30days', '3months', '6months', '1year'].map((tf) => (
-                                <a
-                                    key={tf}
-                                    href={`/4d?timeframe=${tf}`}
-                                    className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${timeframe === tf
-                                        ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300'
-                                        : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-                                        }`}
-                                >
-                                    {tf.replace('days', ' Days').replace('months', ' Months').replace('year', ' Year')}
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {/* Hot Numbers */}
-                        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-                            <div className="flex items-center gap-2 mb-6 text-red-500">
-                                <Flame className="w-5 h-5" />
-                                <h3 className="font-bold text-lg">Hot Numbers (0-9)</h3>
-                            </div>
-                            <div className="grid grid-cols-5 gap-4">
-                                {(stats as any).hot.map((item: any, i: number) => (
-                                    <div key={i} className="text-center">
-                                        <div className="w-12 h-12 mx-auto rounded-full bg-blue-500 text-white flex items-center justify-center text-xl font-bold shadow-md border-2 border-blue-400 mb-2">
-                                            {item.number}
-                                        </div>
-                                        <div className="text-xs font-medium text-red-500 bg-red-50 dark:bg-red-900/20 py-1 px-2 rounded-full inline-block">
-                                            {item.count}x
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Cold Numbers */}
-                        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-                            <div className="flex items-center gap-2 mb-6 text-blue-500">
-                                <Snowflake className="w-5 h-5" />
-                                <h3 className="font-bold text-lg">Cold Numbers (0-9)</h3>
-                            </div>
-                            <div className="grid grid-cols-5 gap-4">
-                                {(stats as any).cold.map((item: any, i: number) => (
-                                    <div key={i} className="text-center">
-                                        <div className="w-12 h-12 mx-auto rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 flex items-center justify-center text-xl font-bold shadow-inner mb-2">
-                                            {item.number}
-                                        </div>
-                                        <div className="text-xs font-medium text-blue-500 bg-blue-50 dark:bg-blue-900/20 py-1 px-2 rounded-full inline-block">
-                                            {item.count}x
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                {/* Statistics (Client Component) */}
+                <FourDStats initialStats={stats} />
             </div>
         </main>
     );
