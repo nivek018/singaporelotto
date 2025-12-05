@@ -28,8 +28,9 @@ async function getHistory(page: number = 1, limit: number = 10) {
     }
 }
 
-export default async function FourDHistoryPage({ searchParams }: { searchParams: { page?: string } }) {
-    const page = Number(searchParams.page) || 1;
+export default async function FourDHistoryPage({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
+    const { page: pageParam } = await searchParams;
+    const page = Number(pageParam) || 1;
     const { results, totalPages } = await getHistory(page);
 
     return (
