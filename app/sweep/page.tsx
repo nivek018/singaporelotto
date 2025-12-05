@@ -2,8 +2,7 @@ import { SweepResult } from "@/components/results/Sweep";
 import pool from "@/lib/db";
 import { SweepModel } from "@/lib/types";
 import { getStats, Timeframe } from "@/lib/stats";
-import { formatCurrency } from "@/lib/utils";
-import { Calendar, Flame, Snowflake, BarChart3 } from "lucide-react";
+import { BarChart3, Flame, Snowflake } from "lucide-react";
 
 async function getLatestResult() {
     const [rows]: any = await pool.query('SELECT data FROM results WHERE type = "Sweep" ORDER BY draw_date DESC LIMIT 1');
@@ -16,6 +15,34 @@ async function getRecentResults() {
     return rows.map((row: any) => JSON.parse(row.data) as SweepModel);
 }
 
+function HorizontalBarChart({ data, maxCount, title }: { data: any[], maxCount: number, title: string }) {
+    return (
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-8">
+            <div className="flex items-center gap-2 mb-6 text-gray-700 dark:text-gray-300">
+                <BarChart3 className="w-5 h-5" />
+                <h3 className="font-bold text-lg">{title}</h3>
+            </div>
+            <div className="space-y-2 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
+                {data.map((item: any) => {
+                    const width = (item.count / maxCount) * 100;
+                    return (
+                        <div key={item.number} className="flex items-center gap-4 group">
+                            <div className="w-8 text-right text-sm font-mono font-bold text-gray-500 dark:text-gray-400">{item.number}</div>
+                            <div className="flex-1 h-6 bg-gray-100 dark:bg-gray-700/50 rounded-full overflow-hidden relative">
+                                <div
+                                    className="h-full bg-blue-500 dark:bg-blue-600 rounded-full transition-all duration-500 ease-out group-hover:bg-blue-400 dark:group-hover:bg-blue-500"
+                                    style={{ width: `${width}%` }}
+                                ></div>
+                            </div>
+                            <div className="w-8 text-left text-xs font-bold text-gray-400 dark:text-gray-500">{item.count}x</div>
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
+    );
+}
+
 export default async function SweepPage({ searchParams }: { searchParams: Promise<{ timeframe?: string }> }) {
     const { timeframe: timeframeParam } = await searchParams;
     const timeframe = (timeframeParam as Timeframe) || '30days';
@@ -26,8 +53,10 @@ export default async function SweepPage({ searchParams }: { searchParams: Promis
 
     if (!latest) return <div className="p-8 text-center">No data available.</div>;
 
-    const chartData = (stats as any).firstDigitChart;
-    const maxCount = Math.max(...chartData.map((d: any) => d.count), 1);
+    const firstDigitChart = (stats as any).firstDigitChart;
+    const otherDigitChart = (stats as any).otherDigitChart;
+    const maxCountFirst = Math.max(...firstDigitChart.map((d: any) => d.count), 1);
+    const maxCountOther = Math.max(...otherDigitChart.map((d: any) => d.count), 1);
 
     return (
         <main className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8 px-4">
@@ -93,41 +122,56 @@ export default async function SweepPage({ searchParams }: { searchParams: Promis
                         </div>
                     </div>
 
-                    {/* First Digit Frequency Chart */}
-                    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-8">
-                        <div className="flex items-center gap-2 mb-6 text-gray-700 dark:text-gray-300">
-                            <BarChart3 className="w-5 h-5" />
-                            <h3 className="font-bold text-lg">First Digit Frequency (10-44)</h3>
-                        </div>
-                        <div className="h-64 flex items-end gap-1 overflow-x-auto pb-4">
-                            {chartData.map((item: any) => {
-                                const height = (item.count / maxCount) * 100;
-                                return (
-                                    <div key={item.number} className="flex-1 min-w-[20px] flex flex-col items-center group relative">
-                                        <div
-                                            className="w-full bg-green-200 dark:bg-green-900/40 hover:bg-green-400 dark:hover:bg-green-700 transition-all rounded-t-sm relative"
-                                            style={{ height: `${height}%` }}
-                                        >
-                                            <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
-                                                {item.count}x
-                                            </div>
+                    {/* Hot/Cold First Digits (10-44) */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+                            <div className="flex items-center gap-2 mb-6 text-red-500">
+                                <Flame className="w-5 h-5" />
+                                <h3 className="font-bold text-lg">Hot First Digits (10-44)</h3>
+                            </div>
+                            <div className="grid grid-cols-6 gap-2">
+                                {(stats as any).hotFirst.map((item: any, i: number) => (
+                                    <div key={i} className="text-center">
+                                        <div className="w-10 h-10 mx-auto rounded-full bg-yellow-500 text-white flex items-center justify-center text-sm font-bold shadow-md border-2 border-yellow-400 mb-2">
+                                            {item.number}
                                         </div>
-                                        <div className="text-[10px] text-gray-500 mt-1 rotate-0">{item.number}</div>
+                                        <div className="text-xs font-medium text-red-500 bg-red-50 dark:bg-red-900/20 py-1 px-2 rounded-full inline-block">
+                                            {item.count}x
+                                        </div>
                                     </div>
-                                );
-                            })}
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+                            <div className="flex items-center gap-2 mb-6 text-blue-500">
+                                <Snowflake className="w-5 h-5" />
+                                <h3 className="font-bold text-lg">Cold First Digits (10-44)</h3>
+                            </div>
+                            <div className="grid grid-cols-6 gap-2">
+                                {(stats as any).coldFirst.map((item: any, i: number) => (
+                                    <div key={i} className="text-center">
+                                        <div className="w-10 h-10 mx-auto rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 flex items-center justify-center text-sm font-bold shadow-inner mb-2">
+                                            {item.number}
+                                        </div>
+                                        <div className="text-xs font-medium text-blue-500 bg-blue-50 dark:bg-blue-900/20 py-1 px-2 rounded-full inline-block">
+                                            {item.count}x
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {/* Hot Numbers (Other Digits) */}
+                    {/* Hot/Cold Other Digits (0-9) */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                         <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
                             <div className="flex items-center gap-2 mb-6 text-red-500">
                                 <Flame className="w-5 h-5" />
                                 <h3 className="font-bold text-lg">Hot Digits (0-9)</h3>
                             </div>
-                            <div className="grid grid-cols-5 gap-4">
-                                {(stats as any).hot.map((item: any, i: number) => (
+                            <div className="grid grid-cols-6 gap-2">
+                                {(stats as any).hotOther.map((item: any, i: number) => (
                                     <div key={i} className="text-center">
                                         <div className="w-10 h-10 mx-auto rounded-full bg-blue-500 text-white flex items-center justify-center text-lg font-bold shadow-md border-2 border-blue-400 mb-2">
                                             {item.number}
@@ -140,14 +184,13 @@ export default async function SweepPage({ searchParams }: { searchParams: Promis
                             </div>
                         </div>
 
-                        {/* Cold Numbers (Other Digits) */}
                         <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
                             <div className="flex items-center gap-2 mb-6 text-blue-500">
                                 <Snowflake className="w-5 h-5" />
                                 <h3 className="font-bold text-lg">Cold Digits (0-9)</h3>
                             </div>
-                            <div className="grid grid-cols-5 gap-4">
-                                {(stats as any).cold.map((item: any, i: number) => (
+                            <div className="grid grid-cols-6 gap-2">
+                                {(stats as any).coldOther.map((item: any, i: number) => (
                                     <div key={i} className="text-center">
                                         <div className="w-10 h-10 mx-auto rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 flex items-center justify-center text-lg font-bold shadow-inner mb-2">
                                             {item.number}
@@ -160,6 +203,11 @@ export default async function SweepPage({ searchParams }: { searchParams: Promis
                             </div>
                         </div>
                     </div>
+
+                    {/* Charts */}
+                    <HorizontalBarChart data={firstDigitChart} maxCount={maxCountFirst} title="First Two Digits Frequency (10-44)" />
+                    <HorizontalBarChart data={otherDigitChart} maxCount={maxCountOther} title="Other Digits Frequency (0-9)" />
+
                 </section>
             </div>
         </main>
