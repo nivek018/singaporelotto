@@ -32,7 +32,7 @@ async function getDrawOptions(page: Page, selectSelector: string) {
         return Array.from(select.options).map(opt => ({
             value: opt.value,
             text: opt.text,
-            date: new Date(opt.text) // Attempt to parse date from text like "Sun, 05 Dec 2021"
+            date: new Date(opt.text)
         }));
     }, selectSelector);
 }
@@ -46,22 +46,19 @@ async function scrape4D(browser: Browser, startDate?: Date, endDate?: Date): Pro
         log('Navigating to 4D results page...', 'INFO');
         await page.goto('http://www.singaporepools.com.sg/en/product/Pages/4d_results.aspx', { waitUntil: 'networkidle0' });
 
-        // Identify dropdown
-        const selectSelector = 'select[name*="ddlDrawDate"]'; // Common pattern
-
+        const selectSelector = '.selectDrawList';
         let options = await getDrawOptions(page, selectSelector);
         log(`Found ${options.length} draw options for 4D.`, 'INFO');
 
-        // Filter options if date range provided
         if (startDate && endDate) {
             options = options.filter(opt => {
-                const d = new Date(opt.text); // Text format usually "Day, DD Mon YYYY"
+                if (!opt.value) return false;
+                const d = new Date(opt.text);
                 return d >= startDate && d <= endDate;
             });
             log(`Filtered to ${options.length} options based on date range.`, 'INFO');
         } else {
-            // If no range, just take the first one (latest)
-            options = [options[0]];
+            options = options.filter(opt => opt.value).slice(0, 1);
             log(`No date range specified, selecting latest draw: ${options[0]?.text}`, 'INFO');
         }
 
@@ -124,17 +121,18 @@ async function scrapeToto(browser: Browser, startDate?: Date, endDate?: Date): P
         log('Navigating to Toto results page...', 'INFO');
         await page.goto('http://www.singaporepools.com.sg/en/product/Pages/toto_results.aspx', { waitUntil: 'networkidle0' });
 
-        const selectSelector = 'select[name*="ddlDrawDate"]';
+        const selectSelector = '.selectDrawList';
         let options = await getDrawOptions(page, selectSelector);
         log(`Found ${options.length} draw options for Toto.`, 'INFO');
 
         if (startDate && endDate) {
             options = options.filter(opt => {
+                if (!opt.value) return false;
                 const d = new Date(opt.text);
                 return d >= startDate && d <= endDate;
             });
         } else {
-            options = [options[0]];
+            options = options.filter(opt => opt.value).slice(0, 1);
         }
 
         for (const opt of options) {
@@ -205,17 +203,18 @@ async function scrapeSweep(browser: Browser, startDate?: Date, endDate?: Date): 
         log('Navigating to Sweep results page...', 'INFO');
         await page.goto('http://www.singaporepools.com.sg/en/product/Pages/sweep_results.aspx', { waitUntil: 'networkidle0' });
 
-        const selectSelector = 'select[name*="ddlDrawDate"]';
+        const selectSelector = '.selectDrawList';
         let options = await getDrawOptions(page, selectSelector);
         log(`Found ${options.length} draw options for Sweep.`, 'INFO');
 
         if (startDate && endDate) {
             options = options.filter(opt => {
+                if (!opt.value) return false;
                 const d = new Date(opt.text);
                 return d >= startDate && d <= endDate;
             });
         } else {
-            options = [options[0]];
+            options = options.filter(opt => opt.value).slice(0, 1);
         }
 
         for (const opt of options) {
