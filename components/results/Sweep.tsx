@@ -2,16 +2,17 @@ import { SweepModel } from "@/lib/types";
 import { formatCurrency } from "@/lib/utils";
 import { Calendar, Hash, Trophy, Star, Gift, Sparkles } from "lucide-react";
 
-function SweepBalls({ number }: { number: string }) {
-    if (!number || number.length !== 7) return <div className="text-2xl font-bold">{number}</div>;
+function SweepBalls({ number }: { number: number | string }) {
+    const numStr = number.toString().padStart(7, '0');
+    if (numStr.length !== 7) return <div className="text-2xl font-bold">{number}</div>;
 
     const parts = [
-        number.substring(0, 2),
-        number[2],
-        number[3],
-        number[4],
-        number[5],
-        number[6]
+        numStr.substring(0, 2),
+        numStr[2],
+        numStr[3],
+        numStr[4],
+        numStr[5],
+        numStr[6]
     ];
 
     return (
@@ -30,7 +31,7 @@ function SweepBalls({ number }: { number: string }) {
                 ))}
             </div>
             <div className="text-lg font-bold text-gray-500 dark:text-gray-400 tracking-widest font-mono">
-                {number}
+                {numStr}
             </div>
         </div>
     );
