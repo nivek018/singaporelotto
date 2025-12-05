@@ -55,6 +55,7 @@ function calculate4DStats(results: FourDModel[]) {
     });
 
     // Full frequency for chart
+    const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
     const frequency = sorted.map(([num, count]) => ({ number: num, count })).sort((a, b) => Number(a.number) - Number(b.number));
 
     // User requested 5 hot and 5 cold for 4D
