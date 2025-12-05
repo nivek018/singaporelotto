@@ -17,8 +17,13 @@ export async function GET(req: Request) {
             const [countRows]: any = await connection.query('SELECT COUNT(*) as count FROM results');
             const total = countRows[0].count;
 
+            const parsedRows = rows.map((row: any) => ({
+                ...row,
+                data: typeof row.data === 'string' ? JSON.parse(row.data) : row.data
+            }));
+
             return NextResponse.json({
-                data: rows,
+                data: parsedRows,
                 pagination: {
                     page,
                     limit,

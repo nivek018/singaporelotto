@@ -12,8 +12,16 @@ async function getLatestResult(type: '4D' | 'Toto' | 'Sweep') {
       [type]
     );
     if (rows.length > 0) {
-      return rows[0].data; // Already JSON parsed by mysql2 if configured, or need parsing? 
-      // mysql2 returns JSON columns as objects usually.
+      let data = rows[0].data;
+      if (typeof data === 'string') {
+        try {
+          data = JSON.parse(data);
+        } catch (e) {
+          console.error('Error parsing JSON data:', e);
+          return null;
+        }
+      }
+      return data;
     }
     return null;
   } catch (e) {
