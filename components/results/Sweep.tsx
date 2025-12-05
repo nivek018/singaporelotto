@@ -16,21 +16,21 @@ function SweepBalls({ number }: { number: number | string }) {
     ];
 
     return (
-        <div className="flex flex-col items-center gap-2">
-            <div className="flex flex-wrap justify-center gap-1 sm:gap-2">
+        <div className="flex flex-col items-center gap-1">
+            <div className="flex flex-wrap justify-center gap-2">
                 {parts.map((part, i) => (
                     <div key={i} className={`
                         flex items-center justify-center
-                        rounded-full font-bold shadow-md border-2
+                        w-10 h-10 sm:w-12 sm:h-12 rounded-full font-bold shadow-md border-2
                         ${i === 0
-                            ? 'w-10 h-10 sm:w-12 sm:h-12 text-lg sm:text-xl bg-white dark:bg-gray-800 text-green-600 dark:text-green-400 border-green-500'
-                            : 'w-8 h-8 sm:w-10 sm:h-10 text-base sm:text-lg bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600'}
+                            ? 'bg-white dark:bg-gray-800 text-green-600 dark:text-green-400 border-green-500 text-sm sm:text-base'
+                            : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600 text-lg sm:text-xl'}
                     `}>
                         {part}
                     </div>
                 ))}
             </div>
-            <div className="text-lg font-bold text-gray-500 dark:text-gray-400 tracking-widest font-mono">
+            <div className="text-sm font-bold text-gray-500 dark:text-gray-400 tracking-widest font-mono mt-1">
                 {numStr}
             </div>
         </div>
@@ -61,7 +61,7 @@ export function SweepResult({ data }: { data: SweepModel }) {
             </div>
 
             <div className="p-6">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div className="flex flex-col gap-4 mb-8">
                     <div className="bg-green-50 dark:bg-green-900/20 p-6 rounded-xl border border-green-100 dark:border-green-900/50 text-center relative overflow-hidden group">
                         <div className="absolute top-0 left-0 w-full h-1 bg-green-500"></div>
                         <div className="text-xs font-bold text-green-600 dark:text-green-400 uppercase tracking-wider mb-4">1st Prize</div>
