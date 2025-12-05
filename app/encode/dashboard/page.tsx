@@ -1,5 +1,6 @@
 import { EncodeForm } from "@/components/admin/EncodeForm";
 import { ScraperForm } from "@/components/admin/ScraperForm";
+import { ResultsGrid } from "@/components/admin/ResultsGrid";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 export default function DashboardPage() {
@@ -15,13 +16,15 @@ export default function DashboardPage() {
                 </div>
             </nav>
 
-            <div className="max-w-3xl mx-auto px-4 py-8">
+            <div className="max-w-4xl mx-auto px-4 py-8">
                 <ScraperForm />
 
-                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow mb-8">
                     <h2 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Manual Result Entry</h2>
                     <EncodeForm />
                 </div>
+
+                <ResultsGrid />
             </div>
         </main>
     );

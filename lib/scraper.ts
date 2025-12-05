@@ -1,6 +1,7 @@
 import puppeteer, { Browser, Page } from 'puppeteer';
 import { FourDModel, TotoModel, SweepModel, TotoPrizeShareModel } from './types';
 import pool from './db';
+import { log, cleanOldLogs } from './logger';
 
 const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36';
 
@@ -20,7 +21,7 @@ async function waitForContentUpdate(page: Page, oldDrawNo: number, selector: str
             oldDrawNo
         );
     } catch (e) {
-        console.log('Timeout waiting for content update, continuing...');
+        log('Timeout waiting for content update, continuing...', 'WARN');
     }
 }
 
@@ -42,12 +43,14 @@ async function scrape4D(browser: Browser, startDate?: Date, endDate?: Date): Pro
     const results: FourDModel[] = [];
 
     try {
+        log('Navigating to 4D results page...', 'INFO');
         await page.goto('http://www.singaporepools.com.sg/en/product/Pages/4d_results.aspx', { waitUntil: 'networkidle0' });
 
         // Identify dropdown
         const selectSelector = 'select[name*="ddlDrawDate"]'; // Common pattern
 
         let options = await getDrawOptions(page, selectSelector);
+        log(`Found ${options.length} draw options for 4D.`, 'INFO');
 
         // Filter options if date range provided
         if (startDate && endDate) {
@@ -55,9 +58,11 @@ async function scrape4D(browser: Browser, startDate?: Date, endDate?: Date): Pro
                 const d = new Date(opt.text); // Text format usually "Day, DD Mon YYYY"
                 return d >= startDate && d <= endDate;
             });
+            log(`Filtered to ${options.length} options based on date range.`, 'INFO');
         } else {
             // If no range, just take the first one (latest)
             options = [options[0]];
+            log(`No date range specified, selecting latest draw: ${options[0]?.text}`, 'INFO');
         }
 
         for (const opt of options) {
@@ -68,7 +73,7 @@ async function scrape4D(browser: Browser, startDate?: Date, endDate?: Date): Pro
             const currentDrawNo = Number(currentDrawNoText.split(' ')[2]);
 
             if (options.length > 1) {
-                console.log(`Navigating to 4D draw: ${opt.text}`);
+                log(`Navigating to 4D draw: ${opt.text}`, 'INFO');
                 await page.select(selectSelector, opt.value);
                 await waitForContentUpdate(page, currentDrawNo, '.drawNumber');
             }
@@ -94,11 +99,16 @@ async function scrape4D(browser: Browser, startDate?: Date, endDate?: Date): Pro
                 });
             });
 
-            if (data[0]) results.push({ ...data[0], drawDate: new Date(data[0].drawDate) });
+            if (data[0]) {
+                results.push({ ...data[0], drawDate: new Date(data[0].drawDate) });
+                log(`Scraped 4D draw ${data[0].drawNo} (${data[0].drawDate})`, 'INFO');
+            } else {
+                log(`Failed to extract data for 4D draw option ${opt.text}`, 'WARN');
+            }
         }
 
-    } catch (e) {
-        console.error('Error scraping 4D:', e);
+    } catch (e: any) {
+        log(`Error scraping 4D: ${e.message}`, 'ERROR');
     } finally {
         await page.close();
     }
@@ -111,10 +121,12 @@ async function scrapeToto(browser: Browser, startDate?: Date, endDate?: Date): P
     const results: TotoModel[] = [];
 
     try {
+        log('Navigating to Toto results page...', 'INFO');
         await page.goto('http://www.singaporepools.com.sg/en/product/Pages/toto_results.aspx', { waitUntil: 'networkidle0' });
 
         const selectSelector = 'select[name*="ddlDrawDate"]';
         let options = await getDrawOptions(page, selectSelector);
+        log(`Found ${options.length} draw options for Toto.`, 'INFO');
 
         if (startDate && endDate) {
             options = options.filter(opt => {
@@ -132,7 +144,7 @@ async function scrapeToto(browser: Browser, startDate?: Date, endDate?: Date): P
             const currentDrawNo = Number(currentDrawNoText.split(' ')[2]);
 
             if (options.length > 1) {
-                console.log(`Navigating to Toto draw: ${opt.text}`);
+                log(`Navigating to Toto draw: ${opt.text}`, 'INFO');
                 await page.select(selectSelector, opt.value);
                 await waitForContentUpdate(page, currentDrawNo, '.drawNumber');
             }
@@ -171,10 +183,13 @@ async function scrapeToto(browser: Browser, startDate?: Date, endDate?: Date): P
                     return { drawNo, drawDate, winning, additional, winningShares };
                 });
             });
-            if (data[0]) results.push({ ...data[0], drawDate: new Date(data[0].drawDate) });
+            if (data[0]) {
+                results.push({ ...data[0], drawDate: new Date(data[0].drawDate) });
+                log(`Scraped Toto draw ${data[0].drawNo}`, 'INFO');
+            }
         }
-    } catch (e) {
-        console.error('Error scraping Toto:', e);
+    } catch (e: any) {
+        log(`Error scraping Toto: ${e.message}`, 'ERROR');
     } finally {
         await page.close();
     }
@@ -187,10 +202,12 @@ async function scrapeSweep(browser: Browser, startDate?: Date, endDate?: Date): 
     const results: SweepModel[] = [];
 
     try {
+        log('Navigating to Sweep results page...', 'INFO');
         await page.goto('http://www.singaporepools.com.sg/en/product/Pages/sweep_results.aspx', { waitUntil: 'networkidle0' });
 
         const selectSelector = 'select[name*="ddlDrawDate"]';
         let options = await getDrawOptions(page, selectSelector);
+        log(`Found ${options.length} draw options for Sweep.`, 'INFO');
 
         if (startDate && endDate) {
             options = options.filter(opt => {
@@ -208,7 +225,7 @@ async function scrapeSweep(browser: Browser, startDate?: Date, endDate?: Date): 
             const currentDrawNo = Number(currentDrawNoText.split(' ')[2]);
 
             if (options.length > 1) {
-                console.log(`Navigating to Sweep draw: ${opt.text}`);
+                log(`Navigating to Sweep draw: ${opt.text}`, 'INFO');
                 await page.select(selectSelector, opt.value);
                 await waitForContentUpdate(page, currentDrawNo, '.drawNumber');
             }
@@ -242,10 +259,13 @@ async function scrapeSweep(browser: Browser, startDate?: Date, endDate?: Date): 
                     return { drawNo, drawDate, winning, jackpot, lucky, gift, consolation, participation, twoD };
                 });
             });
-            if (data[0]) results.push({ ...data[0], drawDate: new Date(data[0].drawDate) });
+            if (data[0]) {
+                results.push({ ...data[0], drawDate: new Date(data[0].drawDate) });
+                log(`Scraped Sweep draw ${data[0].drawNo}`, 'INFO');
+            }
         }
-    } catch (e) {
-        console.error('Error scraping Sweep:', e);
+    } catch (e: any) {
+        log(`Error scraping Sweep: ${e.message}`, 'ERROR');
     } finally {
         await page.close();
     }
@@ -263,7 +283,7 @@ async function saveResult(type: '4D' | 'Toto' | 'Sweep', result: any) {
 
         if (rows.length > 0) {
             if (rows[0].source === 'manual') {
-                console.log(`Skipping manual entry for ${type} draw ${result.drawNo}`);
+                log(`Skipping manual entry for ${type} draw ${result.drawNo}`, 'INFO');
                 return;
             }
             // Update
@@ -271,19 +291,26 @@ async function saveResult(type: '4D' | 'Toto' | 'Sweep', result: any) {
                 'UPDATE results SET data = ?, draw_date = ?, updated_at = NOW() WHERE id = ?',
                 [JSON.stringify(result), result.drawDate, rows[0].id]
             );
+            log(`Updated ${type} draw ${result.drawNo}`, 'INFO');
         } else {
             // Insert
             await connection.query(
                 'INSERT INTO results (type, draw_date, draw_number, data, source) VALUES (?, ?, ?, ?, ?)',
                 [type, result.drawDate, result.drawNo, JSON.stringify(result), 'scrape']
             );
+            log(`Inserted new ${type} draw ${result.drawNo}`, 'INFO');
         }
+    } catch (e: any) {
+        log(`Error saving ${type} result: ${e.message}`, 'ERROR');
     } finally {
         connection.release();
     }
 }
 
 export async function runScraper(startDate?: string, endDate?: string) {
+    cleanOldLogs();
+    log('Starting scraper run...', 'INFO');
+
     const browser = await puppeteer.launch({
         headless: true,
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
@@ -293,21 +320,23 @@ export async function runScraper(startDate?: string, endDate?: string) {
     const end = endDate ? new Date(endDate) : undefined;
 
     try {
-        console.log('Starting 4D scrape...');
+        log('Starting 4D scrape...', 'INFO');
         const fourDResults = await scrape4D(browser, start, end);
         for (const res of fourDResults) await saveResult('4D', res);
 
-        console.log('Starting Toto scrape...');
+        log('Starting Toto scrape...', 'INFO');
         const totoResults = await scrapeToto(browser, start, end);
         for (const res of totoResults) await saveResult('Toto', res);
 
-        console.log('Starting Sweep scrape...');
+        log('Starting Sweep scrape...', 'INFO');
         const sweepResults = await scrapeSweep(browser, start, end);
         for (const res of sweepResults) await saveResult('Sweep', res);
 
-        return { success: true, message: `Scraping completed. Processed ${fourDResults.length + totoResults.length + sweepResults.length} draws.` };
+        const total = fourDResults.length + totoResults.length + sweepResults.length;
+        log(`Scraping completed. Processed ${total} draws.`, 'INFO');
+        return { success: true, message: `Scraping completed. Processed ${total} draws.` };
     } catch (e: any) {
-        console.error('Scraper failed:', e);
+        log(`Scraper failed: ${e.message}`, 'ERROR');
         return { success: false, message: 'Scraping failed: ' + e.message };
     } finally {
         await browser.close();
