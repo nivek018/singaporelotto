@@ -1,0 +1,49 @@
+name: scrape-test
+
+on:
+  workflow_dispatch:
+    inputs:
+      send_notification:
+        required: true
+        type: boolean
+        default: true
+        description: 'Send push notification after scraping'
+      skip_notification_check:
+        required: false
+        type: boolean
+        default: false
+        description: 'Skip notification check'
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: yarn install
+      - run: yarn build
+
+      - name: Scrape data from ALL sources
+        env:
+          IS_CI: true
+          NODE_ENV: staging
+          SERVER_URL: ${{ secrets.SERVER_URL }}
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+          SKIP_NOTIFICATION_CHECK: ${{ contains(inputs.skip_notification_check, 'true') }}
+        run: yarn start
+
+      - name: Send Push Notification
+        if: ${{ success() && contains(inputs.send_notification, 'true') }}
+        env:
+          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+          FIREBASE_PRIVATE_KEY_ID: ${{ secrets.FIREBASE_PRIVATE_KEY_ID }}
+          FIREBASE_PRIVATE_KEY: ${{ secrets.FIREBASE_PRIVATE_KEY }}
+          FIREBASE_DATABASE_URL: ${{ secrets.FIREBASE_DATABASE_URL }}
+          FIREBASE_CLIENT_EMAIL: ${{ secrets.FIREBASE_CLIENT_EMAIL }}
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+        run: yarn firebase

@@ -1,0 +1,36 @@
+name: scrape-silent-all
+on:
+  workflow_dispatch:
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: production
+
+      - name: Use Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: yarn install
+      - run: yarn build
+
+      - name: Scrape data from ALL sources
+        env:
+          NODE_ENV: production
+          SILENT: true
+          SERVER_URL: ${{ secrets.SERVER_URL }}
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+        run: yarn start
+
+      - name: Deploy to Github Pages
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          target_branch: gh-pages
+          build_dir: output
+          commit_message: 'chore: deploy to GitHub Pages'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

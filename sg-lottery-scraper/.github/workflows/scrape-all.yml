@@ -1,0 +1,64 @@
+name: scrape-all
+on:
+  workflow_dispatch:
+    inputs:
+      send_notification:
+        required: true
+        type: boolean
+        default: true
+        description: 'Send push notification after scraping'
+
+  schedule:
+    - cron: '45 10 * * 0,1,2,3,4,5,6' # run everyday on 18:45 GMT+8
+    - cron: '00 11 * * 0,1,2,3,4,5,6' # run everyday on 19:00 GMT+8
+    - cron: '45 13 * * 1,4' # run on 21:45 GMT+8 at Monday and Thursday (Toto Cascade Draw)
+    - cron: '00 14 * * 1,4' # run on 22:00 GMT+8 at Monday and Thursday (Toto Cascade Draw)
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: production
+
+      - name: Consume input variables
+        id: input_vars
+        run: |
+          echo "send_notification=${{ inputs.send_notification || 'true' }}" >> $GITHUB_ENV
+
+      - name: Use Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: yarn install
+      - run: yarn build
+
+      - name: Scrape data from ALL sources
+        env:
+          IS_CI: true
+          NODE_ENV: production
+          SERVER_URL: ${{ secrets.SERVER_URL }}
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+        run: yarn start
+
+      - name: Deploy to Github Pages
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: gh-pages
+          build_dir: output
+          commit_message: 'chore: deploy to GitHub Pages'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Send Push Notification
+        if: ${{ success() && contains(github.env.send_notification, 'true') }}
+        env: 
+          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+          FIREBASE_PRIVATE_KEY_ID: ${{ secrets.FIREBASE_PRIVATE_KEY_ID }}
+          FIREBASE_PRIVATE_KEY: ${{ secrets.FIREBASE_PRIVATE_KEY }}
+          FIREBASE_DATABASE_URL: ${{ secrets.FIREBASE_DATABASE_URL }}
+          FIREBASE_CLIENT_EMAIL: ${{ secrets.FIREBASE_CLIENT_EMAIL }}
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+        run: yarn firebase
