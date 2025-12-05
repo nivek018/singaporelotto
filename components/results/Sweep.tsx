@@ -16,15 +16,14 @@ function SweepBalls({ number }: { number: number | string }) {
     ];
 
     return (
-        <div className="flex flex-col items-center gap-1">
+        <div className="flex flex-col items-center gap-2">
             <div className="flex flex-wrap justify-center gap-2">
                 {parts.map((part, i) => (
                     <div key={i} className={`
-                        flex items-center justify-center
-                        w-10 h-10 sm:w-12 sm:h-12 rounded-full font-bold shadow-md border-2
+                        flex items-center justify-center rounded-full font-bold shadow-lg border-4
                         ${i === 0
-                            ? 'bg-white dark:bg-gray-800 text-green-600 dark:text-green-400 border-green-500 text-sm sm:text-base'
-                            : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600 text-lg sm:text-xl'}
+                            ? 'w-12 h-12 sm:w-14 sm:h-14 bg-yellow-500 text-white border-yellow-400 text-lg sm:text-xl'
+                            : 'w-12 h-12 sm:w-14 sm:h-14 bg-blue-500 text-white border-blue-400 text-xl sm:text-2xl'}
                     `}>
                         {part}
                     </div>
