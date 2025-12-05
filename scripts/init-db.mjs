@@ -6,8 +6,11 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Load .env.local
-dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
+// Load .env.local or .env
+// const envLocalPath = path.resolve(__dirname, '../.env.local');
+const envPath = path.resolve(__dirname, '../.env');
+//dotenv.config({ path: envLocalPath });
+dotenv.config({ path: envPath }); // Will not overwrite existing keys from .env.local
 
 async function initDb() {
     console.log('Initializing database...');
