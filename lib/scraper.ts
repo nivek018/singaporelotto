@@ -153,7 +153,9 @@ async function scrapeToto(browser: Browser, startDate?: Date, endDate?: Date): P
                     const drawNoText = item.querySelector('.drawNumber')?.textContent?.trim() || '';
                     const drawNo = Number(drawNoText.split(' ')[2]);
                     const rawDrawDate = item.querySelector('.drawDate')?.textContent?.trim() || '';
-                    const drawDate = new Date(`${rawDrawDate} GMT+0800`).toISOString();
+                    // Clean date string (remove newlines, extra spaces)
+                    const cleanDate = rawDrawDate.replace(/\s+/g, ' ').trim();
+                    const drawDate = new Date(`${cleanDate} GMT+0800`).toISOString();
 
                     const winning = [
                         Number(item.querySelector('.win1')?.textContent?.trim()),
@@ -165,15 +167,38 @@ async function scrapeToto(browser: Browser, startDate?: Date, endDate?: Date): P
                     ];
                     const additional = Number(item.querySelector('.additional')?.textContent?.trim());
 
+                    // Extract Jackpot Amount (Group 1 Prize) from header/summary if available
+                    // Look for text like "Group 1 Prize $1,234,567"
+                    let jackpotAmount = 0;
+                    const allElements = Array.from(item.querySelectorAll('*'));
+                    const jackpotEl = allElements.find(el => el.textContent?.includes('Group 1 Prize') && el.children.length === 0);
+                    if (jackpotEl) {
+                        const text = jackpotEl.textContent || '';
+                        // Try to match amount
+                        const match = text.match(/Group 1 Prize\s*[:]?\s*[$]?([0-9,.]+)/i);
+                        if (match) {
+                            jackpotAmount = Number(match[1].replace(/[^\d.]/g, ''));
+                        }
+                    }
+
                     const winningShares: any[] = [];
                     const rows = Array.from(item.querySelectorAll('.tableWinningShares tr')).slice(2);
                     rows.forEach(row => {
                         const cols = row.querySelectorAll('td');
                         if (cols.length >= 3) {
+                            const group = cols[0].textContent?.trim() || '';
+                            let prizeAmount = Number(cols[1].textContent?.trim().replace(/[^\d.]/g, ''));
+                            const count = Number(cols[2].textContent?.trim().replace(/[^\d.]/g, ''));
+
+                            // Use extracted jackpot amount for Group 1 if table value is 0/missing
+                            if (group.includes('Group 1') && (prizeAmount === 0 || isNaN(prizeAmount)) && jackpotAmount > 0) {
+                                prizeAmount = jackpotAmount;
+                            }
+
                             winningShares.push({
-                                group: cols[0].textContent?.trim(),
-                                prizeAmount: Number(cols[1].textContent?.trim().replace(/[^\d.]/g, '')),
-                                count: Number(cols[2].textContent?.trim().replace(/[^\d.]/g, '')),
+                                group,
+                                prizeAmount,
+                                count,
                             });
                         }
                     });
