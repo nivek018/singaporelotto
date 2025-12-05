@@ -3,25 +3,33 @@
 import { useState } from 'react';
 import { Loader2 } from 'lucide-react';
 
-export function EncodeForm() {
-    const [password, setPassword] = useState('');
-    const [type, setType] = useState<'4D' | 'Toto' | 'Sweep'>('4D');
-    const [drawDate, setDrawDate] = useState('');
-    const [drawNo, setDrawNo] = useState('');
+interface EncodeFormProps {
+    initialData?: any;
+    onSuccess?: () => void;
+    onCancel?: () => void;
+}
+
+export function EncodeForm({ initialData, onSuccess, onCancel }: EncodeFormProps) {
+    const [password, setPassword] = useState(''); // Only needed for new entries or re-auth if required? Let's keep it simple.
+    // Actually, for editing, we might not need password if the user is already logged in to dashboard.
+    // But the API might require it or check session. The current /api/encode/save checks password.
+    // The /api/encode/results (PUT) does NOT check password in body, it relies on middleware/session (which we implemented).
+
+    const [type, setType] = useState<'4D' | 'Toto' | 'Sweep'>(initialData?.type || '4D');
+    const [drawDate, setDrawDate] = useState(initialData?.draw_date ? new Date(initialData.draw_date).toISOString().split('T')[0] : '');
+    const [drawNo, setDrawNo] = useState(initialData?.draw_number || '');
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
 
-    // 4D Fields
-    const [fourDWinning, setFourDWinning] = useState(['', '', '']);
-    const [fourDStarter, setFourDStarter] = useState(Array(10).fill(''));
-    const [fourDConsolation, setFourDConsolation] = useState(Array(10).fill(''));
+    // Initialize fields based on initialData
+    const [fourDWinning, setFourDWinning] = useState(initialData?.data?.winning?.map(String) || ['', '', '']);
+    const [fourDStarter, setFourDStarter] = useState(initialData?.data?.starter?.map(String) || Array(10).fill(''));
+    const [fourDConsolation, setFourDConsolation] = useState(initialData?.data?.consolation?.map(String) || Array(10).fill(''));
 
-    // Toto Fields (Simplified for manual entry - just winning numbers + additional)
-    const [totoWinning, setTotoWinning] = useState(Array(6).fill(''));
-    const [totoAdditional, setTotoAdditional] = useState('');
+    const [totoWinning, setTotoWinning] = useState(initialData?.data?.winning?.map(String) || Array(6).fill(''));
+    const [totoAdditional, setTotoAdditional] = useState(initialData?.data?.additional?.toString() || '');
 
-    // Sweep Fields (Simplified - just top 3)
-    const [sweepWinning, setSweepWinning] = useState(['', '', '']);
+    const [sweepWinning, setSweepWinning] = useState(initialData?.data?.winning?.map(String) || ['', '', '']);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -44,37 +52,56 @@ export function EncodeForm() {
                 drawDate: new Date(drawDate),
                 winning: totoWinning.map(Number),
                 additional: Number(totoAdditional),
-                winningShares: [], // Manual entry might skip shares details for now
+                winningShares: initialData?.data?.winningShares || [],
             };
         } else if (type === 'Sweep') {
             data = {
                 drawNo: Number(drawNo),
                 drawDate: new Date(drawDate),
                 winning: sweepWinning.map(Number),
-                jackpot: [],
-                lucky: [],
-                gift: [],
-                consolation: [],
-                participation: [],
-                twoD: [],
+                jackpot: initialData?.data?.jackpot || [],
+                lucky: initialData?.data?.lucky || [],
+                gift: initialData?.data?.gift || [],
+                consolation: initialData?.data?.consolation || [],
+                participation: initialData?.data?.participation || [],
+                twoD: initialData?.data?.twoD || [],
             };
         }
 
         try {
-            const res = await fetch('/api/encode/save', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    password,
-                    type,
-                    drawDate,
-                    drawNo,
-                    data
-                }),
-            });
+            let res;
+            if (initialData) {
+                // Edit Mode
+                res = await fetch('/api/encode/results', {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        id: initialData.id,
+                        type,
+                        drawDate,
+                        drawNo,
+                        data
+                    }),
+                });
+            } else {
+                // Create Mode
+                res = await fetch('/api/encode/save', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        password,
+                        type,
+                        drawDate,
+                        drawNo,
+                        data
+                    }),
+                });
+            }
+
             const json = await res.json();
             if (json.success) {
                 setMessage('Saved successfully!');
+                if (onSuccess) onSuccess();
             } else {
                 setMessage('Error: ' + json.message);
             }
@@ -87,16 +114,18 @@ export function EncodeForm() {
 
     return (
         <form onSubmit={handleSubmit} className="space-y-6 bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
-            <div>
-                <label className="block text-sm font-medium mb-1">Admin Password</label>
-                <input
-                    type="password"
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
-                    className="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600"
-                    required
-                />
-            </div>
+            {!initialData && (
+                <div>
+                    <label className="block text-sm font-medium mb-1">Admin Password</label>
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                        className="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600"
+                        required
+                    />
+                </div>
+            )}
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
@@ -251,14 +280,26 @@ export function EncodeForm() {
                 )}
             </div>
 
-            <button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:opacity-50 flex justify-center items-center"
-            >
-                {loading ? <Loader2 className="animate-spin mr-2" /> : null}
-                Save Result
-            </button>
+            <div className="flex gap-4">
+                <button
+                    type="submit"
+                    disabled={loading}
+                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:opacity-50 flex justify-center items-center"
+                >
+                    {loading ? <Loader2 className="animate-spin mr-2" /> : null}
+                    {initialData ? 'Update Result' : 'Save Result'}
+                </button>
+
+                {onCancel && (
+                    <button
+                        type="button"
+                        onClick={onCancel}
+                        className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded"
+                    >
+                        Cancel
+                    </button>
+                )}
+            </div>
 
             {message && (
                 <div className={`p-4 rounded ${message.includes('Error') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
