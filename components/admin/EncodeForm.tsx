@@ -61,7 +61,7 @@ export function EncodeForm() {
         }
 
         try {
-            const res = await fetch('/api/admin/save', {
+            const res = await fetch('/api/encode/save', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

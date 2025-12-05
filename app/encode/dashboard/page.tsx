@@ -1,7 +1,8 @@
 import { EncodeForm } from "@/components/admin/EncodeForm";
+import { ScraperForm } from "@/components/admin/ScraperForm";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
-export default function AdminEncodePage() {
+export default function DashboardPage() {
     return (
         <main className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
             <nav className="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-10">
@@ -14,9 +15,13 @@ export default function AdminEncodePage() {
                 </div>
             </nav>
 
-            <div className="max-w-2xl mx-auto px-4 py-8">
-                <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200">Manual Result Entry</h2>
-                <EncodeForm />
+            <div className="max-w-3xl mx-auto px-4 py-8">
+                <ScraperForm />
+
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+                    <h2 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Manual Result Entry</h2>
+                    <EncodeForm />
+                </div>
             </div>
         </main>
     );
