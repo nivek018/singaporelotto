@@ -43,6 +43,12 @@ export async function DELETE(req: Request) {
     try {
         const { searchParams } = new URL(req.url);
         const id = searchParams.get('id');
+        const password = searchParams.get('password');
+
+        // Security: Require password for deletion
+        if (!process.env.ADMIN_PASSWORD || password !== process.env.ADMIN_PASSWORD) {
+            return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 401 });
+        }
 
         if (!id) {
             return NextResponse.json({ success: false, message: 'ID required' }, { status: 400 });
@@ -63,7 +69,12 @@ export async function DELETE(req: Request) {
 export async function PUT(req: Request) {
     try {
         const body = await req.json();
-        const { id, data, drawDate, drawNo, type } = body;
+        const { id, data, drawDate, drawNo, type, password } = body;
+
+        // Security: Require password for updates
+        if (!process.env.ADMIN_PASSWORD || password !== process.env.ADMIN_PASSWORD) {
+            return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 401 });
+        }
 
         if (!id) {
             return NextResponse.json({ success: false, message: 'ID required' }, { status: 400 });

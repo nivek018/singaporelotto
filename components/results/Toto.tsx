@@ -1,29 +1,33 @@
 import { TotoModel } from "@/lib/types";
 import { formatCurrency } from "@/lib/utils";
 import { Calendar, Hash, Trophy, Users, DollarSign } from "lucide-react";
+import { ReactNode } from "react";
 
-export function TotoResult({ data }: { data: TotoModel }) {
+export function TotoResult({ data, countdown }: { data: TotoModel; countdown?: ReactNode }) {
     if (!data) return null;
     return (
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden border border-gray-200 dark:border-gray-700 transition-all hover:shadow-2xl">
+        <div className="bg-white dark:bg-gray-800 shadow-xl overflow-hidden transition-all hover:shadow-2xl">
             <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-4 text-white">
                 <div className="flex justify-between items-center">
                     <div className="flex items-center gap-2">
                         <Trophy className="w-6 h-6" />
                         <h2 className="text-xl font-bold">Toto Results</h2>
                     </div>
-                    <div className="text-right text-blue-100 text-sm">
-                        <div className="flex items-center justify-end gap-1">
-                            <Hash className="w-3 h-3" />
-                            <span>Draw {data.drawNo}</span>
-                        </div>
-                        <div className="flex items-center justify-end gap-1">
-                            <Calendar className="w-3 h-3" />
-                            <span>{new Date(data.drawDate).toLocaleDateString('en-SG', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' })}</span>
+                    <div className="text-right text-white/90">
+                        <div className="flex items-center justify-end gap-1.5">
+                            <Calendar className="w-4 h-4" />
+                            <span className="text-sm font-medium">{new Date(data.drawDate).toLocaleDateString('en-SG', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' })}</span>
                         </div>
                     </div>
                 </div>
             </div>
+
+            {/* Countdown slot */}
+            {countdown && (
+                <div className="px-4 py-3 bg-blue-50/50 dark:bg-gray-800">
+                    {countdown}
+                </div>
+            )}
 
             <div className="p-6">
                 <div className="flex flex-wrap justify-center gap-3 mb-8">

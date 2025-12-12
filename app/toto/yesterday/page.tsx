@@ -1,4 +1,11 @@
-import { TotoResult } from "@/components/results/Toto";
+﻿import { TotoResult } from "@/components/results/Toto";
+import { constructMetadata } from "@/lib/metadata";
+
+export const metadata = constructMetadata({
+    title: "Toto Results Yesterday - SG Lotto",
+    description: "Previous Toto Results",
+    path: "/toto/yesterday",
+});
 import pool from "@/lib/db";
 import { TotoModel } from "@/lib/types";
 import { Calendar } from "lucide-react";
@@ -35,7 +42,7 @@ export default async function TotoYesterdayPage() {
                 <div className="flex items-center gap-2 mb-6 text-gray-500 dark:text-gray-400 text-sm">
                     <a href="/" className="hover:text-blue-600 dark:hover:text-blue-400">Home</a>
                     <span>/</span>
-                    <a href="/toto/today" className="hover:text-blue-600 dark:hover:text-blue-400">Toto</a>
+                    <a href="/toto" className="hover:text-blue-600 dark:hover:text-blue-400">Toto</a>
                     <span>/</span>
                     <span className="text-gray-900 dark:text-white font-medium">Yesterday</span>
                 </div>

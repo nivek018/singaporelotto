@@ -1,4 +1,11 @@
-import { FourDResult } from "@/components/results/FourD";
+﻿import { FourDResult } from "@/components/results/FourD";
+import { constructMetadata } from "@/lib/metadata";
+
+export const metadata = constructMetadata({
+    title: "4D Results Yesterday - SG Lotto",
+    description: "Previous 4D Results",
+    path: "/4d/yesterday",
+});
 import pool from "@/lib/db";
 import { FourDModel } from "@/lib/types";
 import { Calendar } from "lucide-react";
@@ -39,7 +46,7 @@ export default async function FourDYesterdayPage() {
                 <div className="flex items-center gap-2 mb-6 text-gray-500 dark:text-gray-400 text-sm">
                     <a href="/" className="hover:text-blue-600 dark:hover:text-blue-400">Home</a>
                     <span>/</span>
-                    <a href="/4d/today" className="hover:text-blue-600 dark:hover:text-blue-400">4D</a>
+                    <a href="/4d" className="hover:text-blue-600 dark:hover:text-blue-400">4D</a>
                     <span>/</span>
                     <span className="text-gray-900 dark:text-white font-medium">Yesterday</span>
                 </div>

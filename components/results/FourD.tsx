@@ -1,6 +1,7 @@
 import { FourDModel } from "@/lib/types";
 import { formatCurrency } from "@/lib/utils";
 import { Calendar, Hash, Trophy, Award } from "lucide-react";
+import { ReactNode } from "react";
 
 function FourDBalls({ number }: { number: number | string }) {
     const numStr = number.toString().padStart(4, '0');
@@ -32,28 +33,31 @@ function FourDBalls({ number }: { number: number | string }) {
     );
 }
 
-export function FourDResult({ data }: { data: FourDModel }) {
+export function FourDResult({ data, countdown }: { data: FourDModel; countdown?: ReactNode }) {
     if (!data) return null;
     return (
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden border border-gray-200 dark:border-gray-700 transition-all hover:shadow-2xl">
+        <div className="bg-white dark:bg-gray-800 shadow-xl overflow-hidden transition-all hover:shadow-2xl">
             <div className="bg-gradient-to-r from-yellow-500 to-yellow-600 p-4 text-white">
                 <div className="flex justify-between items-center">
                     <div className="flex items-center gap-2">
                         <Trophy className="w-6 h-6" />
                         <h2 className="text-xl font-bold">4D Results</h2>
                     </div>
-                    <div className="text-right text-yellow-100 text-sm">
-                        <div className="flex items-center justify-end gap-1">
-                            <Hash className="w-3 h-3" />
-                            <span>Draw {data.drawNo}</span>
-                        </div>
-                        <div className="flex items-center justify-end gap-1">
-                            <Calendar className="w-3 h-3" />
-                            <span>{new Date(data.drawDate).toLocaleDateString('en-SG', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' })}</span>
+                    <div className="text-right text-white/90">
+                        <div className="flex items-center justify-end gap-1.5">
+                            <Calendar className="w-4 h-4" />
+                            <span className="text-sm font-medium">{new Date(data.drawDate).toLocaleDateString('en-SG', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' })}</span>
                         </div>
                     </div>
                 </div>
             </div>
+
+            {/* Countdown slot */}
+            {countdown && (
+                <div className="px-4 py-3 bg-yellow-50/50 dark:bg-gray-800">
+                    {countdown}
+                </div>
+            )}
 
             <div className="p-6">
                 {/* Top 3 Prizes */}
@@ -85,9 +89,9 @@ export function FourDResult({ data }: { data: FourDModel }) {
                             <Award className="w-4 h-4 text-blue-500" />
                             <h3 className="font-semibold text-sm uppercase tracking-wide">Starter Prizes</h3>
                         </div>
-                        <div className="grid grid-cols-5 gap-2">
-                            {data.starter.map((num, i) => (
-                                <div key={i} className="bg-gray-50 dark:bg-gray-700/30 p-2 text-center rounded-lg font-mono font-bold text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors">
+                        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+                            {data.starter.map((num: number, i: number) => (
+                                <div key={i} className="bg-gray-100 dark:bg-gray-700/50 py-2 px-1 text-center rounded font-mono font-bold text-xs sm:text-sm text-gray-800 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors min-w-0">
                                     {num.toString().padStart(4, '0')}
                                 </div>
                             ))}
@@ -100,9 +104,9 @@ export function FourDResult({ data }: { data: FourDModel }) {
                             <Award className="w-4 h-4 text-green-500" />
                             <h3 className="font-semibold text-sm uppercase tracking-wide">Consolation Prizes</h3>
                         </div>
-                        <div className="grid grid-cols-5 gap-2">
-                            {data.consolation.map((num, i) => (
-                                <div key={i} className="bg-gray-50 dark:bg-gray-700/30 p-2 text-center rounded-lg font-mono font-bold text-gray-700 dark:text-gray-300 hover:bg-green-50 dark:hover:bg-green-900/20 transition-colors">
+                        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+                            {data.consolation.map((num: number, i: number) => (
+                                <div key={i} className="bg-gray-100 dark:bg-gray-700/50 py-2 px-1 text-center rounded font-mono font-bold text-xs sm:text-sm text-gray-800 dark:text-gray-200 hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors min-w-0">
                                     {num.toString().padStart(4, '0')}
                                 </div>
                             ))}

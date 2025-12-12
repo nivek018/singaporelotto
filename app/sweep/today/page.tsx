@@ -1,4 +1,11 @@
-import { SweepResult } from "@/components/results/Sweep";
+﻿import { SweepResult } from "@/components/results/Sweep";
+import { constructMetadata } from "@/lib/metadata";
+
+export const metadata = constructMetadata({
+    title: "Singapore Sweep Results Today - SG Lotto",
+    description: "Latest Singapore Sweep Results Today",
+    path: "/sweep/today",
+});
 import pool from "@/lib/db";
 import { SweepModel } from "@/lib/types";
 import { Calendar } from "lucide-react";

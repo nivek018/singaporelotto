@@ -1,4 +1,11 @@
-import { TotoResult } from "@/components/results/Toto";
+﻿import { TotoResult } from "@/components/results/Toto";
+import { constructMetadata } from "@/lib/metadata";
+
+export const metadata = constructMetadata({
+    title: "Toto Results Today - SG Lotto",
+    description: "Latest Toto Results Today",
+    path: "/toto/today",
+});
 import pool from "@/lib/db";
 import { TotoModel } from "@/lib/types";
 import { Calendar } from "lucide-react";

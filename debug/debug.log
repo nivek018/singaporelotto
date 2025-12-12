@@ -1,0 +1,563 @@
+[09/12/2025, 1:18:14 pm] [INFO] Starting scraper run...
+[09/12/2025, 1:18:19 pm] [INFO] Starting 4D scrape...
+[09/12/2025, 1:18:20 pm] [INFO] Navigating to 4D results page...
+[09/12/2025, 1:18:22 pm] [INFO] Found 470 draw options for 4D.
+[09/12/2025, 1:18:22 pm] [INFO] Filtered to 3 options based on date range.
+[09/12/2025, 1:18:22 pm] [INFO] Navigating to 4D draw: Sun, 07 Dec 2025
+[09/12/2025, 1:18:23 pm] [WARN] Failed to extract data for 4D draw option Sun, 07 Dec 2025
+[09/12/2025, 1:18:23 pm] [INFO] Navigating to 4D draw: Sat, 06 Dec 2025
+[09/12/2025, 1:18:28 pm] [WARN] Timeout waiting for content update, continuing...
+[09/12/2025, 1:18:28 pm] [INFO] Scraped 4D draw 5415 (2025-12-06T16:00:00.000Z)
+[09/12/2025, 1:18:28 pm] [INFO] Navigating to 4D draw: Wed, 03 Dec 2025
+[09/12/2025, 1:18:28 pm] [WARN] Failed to extract data for 4D draw option Wed, 03 Dec 2025
+[09/12/2025, 1:18:28 pm] [INFO] Inserted new 4D draw 5415
+[09/12/2025, 1:18:28 pm] [INFO] Starting Toto scrape...
+[09/12/2025, 1:18:28 pm] [INFO] Navigating to Toto results page...
+[09/12/2025, 1:18:29 pm] [INFO] Found 313 draw options for Toto.
+[09/12/2025, 1:18:29 pm] [INFO] Navigating to Toto draw: Mon, 08 Dec 2025
+[09/12/2025, 1:18:34 pm] [WARN] Timeout waiting for content update, continuing...
+[09/12/2025, 1:18:34 pm] [INFO] Scraped Toto draw 4137
+[09/12/2025, 1:18:34 pm] [INFO] Navigating to Toto draw: Thu, 04 Dec 2025
+[09/12/2025, 1:18:35 pm] [INFO] Scraped Toto draw 4136
+[09/12/2025, 1:18:35 pm] [INFO] Inserted new Toto draw 4137
+[09/12/2025, 1:18:35 pm] [INFO] Updated Toto draw 4136
+[09/12/2025, 1:18:35 pm] [INFO] Starting Sweep scrape...
+[09/12/2025, 1:18:35 pm] [INFO] Navigating to Sweep results page...
+[09/12/2025, 1:18:36 pm] [INFO] Found 37 draw options for Sweep.
+[09/12/2025, 1:18:36 pm] [INFO] Scraped Sweep draw 1085
+[09/12/2025, 1:18:36 pm] [INFO] Updated Sweep draw 1085
+[09/12/2025, 1:18:36 pm] [INFO] Scraping completed. Processed 4 draws.
+[09/12/2025, 1:22:02 pm] [INFO] Starting scraper run...
+[09/12/2025, 1:22:08 pm] [INFO] Starting 4D scrape...
+[09/12/2025, 1:22:08 pm] [INFO] Navigating to 4D results page...
+[09/12/2025, 1:22:11 pm] [INFO] Found 470 draw options for 4D.
+[09/12/2025, 1:22:11 pm] [INFO] Filtered to 16 options based on date range.
+[09/12/2025, 1:22:11 pm] [INFO] Navigating to 4D draw: Sun, 07 Dec 2025
+[09/12/2025, 1:22:11 pm] [INFO] Scraped 4D draw 5415 (2025-12-06T16:00:00.000Z)
+[09/12/2025, 1:22:11 pm] [INFO] Navigating to 4D draw: Sat, 06 Dec 2025
+[09/12/2025, 1:22:16 pm] [WARN] Timeout waiting for content update, continuing...
+[09/12/2025, 1:22:16 pm] [INFO] Scraped 4D draw 5415 (2025-12-06T16:00:00.000Z)
+[09/12/2025, 1:22:16 pm] [INFO] Navigating to 4D draw: Wed, 03 Dec 2025
+[09/12/2025, 1:22:16 pm] [WARN] Failed to extract data for 4D draw option Wed, 03 Dec 2025
+[09/12/2025, 1:22:16 pm] [ERROR] Error scraping 4D: Error: failed to find element matching selector ".drawNumber"
+[09/12/2025, 1:22:17 pm] [INFO] Inserted new 4D draw 5415
+[09/12/2025, 1:22:17 pm] [INFO] Updated 4D draw 5415
+[09/12/2025, 1:22:17 pm] [INFO] Starting Toto scrape...
+[09/12/2025, 1:22:17 pm] [INFO] Navigating to Toto results page...
+[09/12/2025, 1:22:18 pm] [INFO] Found 313 draw options for Toto.
+[09/12/2025, 1:22:18 pm] [INFO] Navigating to Toto draw: Mon, 08 Dec 2025
+[09/12/2025, 1:22:23 pm] [WARN] Timeout waiting for content update, continuing...
+[09/12/2025, 1:22:23 pm] [INFO] Scraped Toto draw 4137
+[09/12/2025, 1:22:23 pm] [INFO] Navigating to Toto draw: Thu, 04 Dec 2025
+[09/12/2025, 1:22:23 pm] [INFO] Scraped Toto draw 4136
+[09/12/2025, 1:22:23 pm] [INFO] Navigating to Toto draw: Mon, 01 Dec 2025
+[09/12/2025, 1:22:23 pm] [ERROR] Error scraping Toto: No element found for selector: .selectDrawList
+[09/12/2025, 1:22:23 pm] [INFO] Inserted new Toto draw 4137
+[09/12/2025, 1:22:23 pm] [INFO] Inserted new Toto draw 4136
+[09/12/2025, 1:22:23 pm] [INFO] Starting Sweep scrape...
+[09/12/2025, 1:22:24 pm] [INFO] Navigating to Sweep results page...
+[09/12/2025, 1:22:25 pm] [INFO] Found 37 draw options for Sweep.
+[09/12/2025, 1:22:25 pm] [INFO] Navigating to Sweep draw: Wed, 03 Dec 2025
+[09/12/2025, 1:22:25 pm] [ERROR] Error scraping Sweep: Error: failed to find element matching selector ".drawNumber"
+[09/12/2025, 1:22:25 pm] [INFO] Scraping completed. Processed 4 draws.
+[09/12/2025, 1:24:31 pm] [INFO] Starting scraper run...
+[09/12/2025, 1:24:37 pm] [INFO] Starting 4D scrape...
+[09/12/2025, 1:24:37 pm] [INFO] Navigating to 4D results page...
+[09/12/2025, 1:24:39 pm] [INFO] Found 470 draw options for 4D.
+[09/12/2025, 1:24:39 pm] [INFO] Filtered to 13 options based on date range.
+[09/12/2025, 1:24:39 pm] [INFO] Navigating to 4D draw: Sun, 30 Nov 2025
+[09/12/2025, 1:24:40 pm] [WARN] Failed to extract data for 4D draw option Sun, 30 Nov 2025
+[09/12/2025, 1:24:40 pm] [INFO] Navigating to 4D draw: Sat, 29 Nov 2025
+[09/12/2025, 1:24:45 pm] [WARN] Timeout waiting for content update, continuing...
+[09/12/2025, 1:24:45 pm] [INFO] Scraped 4D draw 5412 (2025-11-29T16:00:00.000Z)
+[09/12/2025, 1:24:45 pm] [INFO] Navigating to 4D draw: Wed, 26 Nov 2025
+[09/12/2025, 1:24:45 pm] [WARN] Failed to extract data for 4D draw option Wed, 26 Nov 2025
+[09/12/2025, 1:24:45 pm] [ERROR] Error scraping 4D: Error: failed to find element matching selector ".drawNumber"
+[09/12/2025, 1:24:45 pm] [INFO] Inserted new 4D draw 5412
+[09/12/2025, 1:24:45 pm] [INFO] Starting Toto scrape...
+[09/12/2025, 1:24:45 pm] [INFO] Navigating to Toto results page...
+[09/12/2025, 1:24:47 pm] [INFO] Found 313 draw options for Toto.
+[09/12/2025, 1:24:47 pm] [INFO] Navigating to Toto draw: Thu, 27 Nov 2025
+[09/12/2025, 1:24:47 pm] [INFO] Scraped Toto draw 4134
+[09/12/2025, 1:24:47 pm] [INFO] Navigating to Toto draw: Mon, 24 Nov 2025
+[09/12/2025, 1:24:47 pm] [ERROR] Error scraping Toto: No element found for selector: .selectDrawList
+[09/12/2025, 1:24:47 pm] [INFO] Inserted new Toto draw 4134
+[09/12/2025, 1:24:47 pm] [INFO] Starting Sweep scrape...
+[09/12/2025, 1:24:47 pm] [INFO] Navigating to Sweep results page...
+[09/12/2025, 1:24:48 pm] [INFO] Found 37 draw options for Sweep.
+[09/12/2025, 1:24:48 pm] [INFO] Scraped Sweep draw 1085
+[09/12/2025, 1:24:48 pm] [INFO] Inserted new Sweep draw 1085
+[09/12/2025, 1:24:48 pm] [INFO] Scraping completed. Processed 3 draws.
+[09/12/2025, 1:33:00 pm] [INFO] Starting scraper run...
+[09/12/2025, 1:33:06 pm] [INFO] Starting 4D scrape...
+[09/12/2025, 1:33:06 pm] [INFO] Navigating to 4D results page...
+[09/12/2025, 1:33:08 pm] [INFO] Found 470 draw options for 4D.
+[09/12/2025, 1:33:08 pm] [INFO] Filtered to 16 options based on date range.
+[09/12/2025, 1:33:08 pm] [INFO] Navigating to 4D draw: Sun, 07 Dec 2025
+[09/12/2025, 1:33:09 pm] [INFO] Scraped 4D draw 5415 (2025-12-06T16:00:00.000Z)
+[09/12/2025, 1:33:09 pm] [INFO] Navigating to 4D draw: Sat, 06 Dec 2025
+[09/12/2025, 1:33:09 pm] [INFO] Scraped 4D draw 5414 (2025-12-05T16:00:00.000Z)
+[09/12/2025, 1:33:09 pm] [INFO] Navigating to 4D draw: Wed, 03 Dec 2025
+[09/12/2025, 1:33:10 pm] [INFO] Scraped 4D draw 5413 (2025-12-02T16:00:00.000Z)
+[09/12/2025, 1:33:10 pm] [INFO] Navigating to 4D draw: Sun, 30 Nov 2025
+[09/12/2025, 1:33:11 pm] [INFO] Scraped 4D draw 5412 (2025-11-29T16:00:00.000Z)
+[09/12/2025, 1:33:11 pm] [INFO] Navigating to 4D draw: Sat, 29 Nov 2025
+[09/12/2025, 1:33:12 pm] [INFO] Scraped 4D draw 5411 (2025-11-28T16:00:00.000Z)
+[09/12/2025, 1:33:12 pm] [INFO] Navigating to 4D draw: Wed, 26 Nov 2025
+[09/12/2025, 1:33:13 pm] [INFO] Scraped 4D draw 5410 (2025-11-25T16:00:00.000Z)
+[09/12/2025, 1:33:13 pm] [INFO] Navigating to 4D draw: Sun, 23 Nov 2025
+[09/12/2025, 1:33:14 pm] [INFO] Scraped 4D draw 5409 (2025-11-22T16:00:00.000Z)
+[09/12/2025, 1:33:14 pm] [INFO] Navigating to 4D draw: Sat, 22 Nov 2025
+[09/12/2025, 1:33:15 pm] [INFO] Scraped 4D draw 5408 (2025-11-21T16:00:00.000Z)
+[09/12/2025, 1:33:15 pm] [INFO] Navigating to 4D draw: Wed, 19 Nov 2025
+[09/12/2025, 1:33:16 pm] [INFO] Scraped 4D draw 5407 (2025-11-18T16:00:00.000Z)
+[09/12/2025, 1:33:16 pm] [INFO] Navigating to 4D draw: Sun, 16 Nov 2025
+[09/12/2025, 1:33:16 pm] [INFO] Scraped 4D draw 5406 (2025-11-15T16:00:00.000Z)
+[09/12/2025, 1:33:17 pm] [INFO] Navigating to 4D draw: Sat, 15 Nov 2025
+[09/12/2025, 1:33:17 pm] [INFO] Scraped 4D draw 5405 (2025-11-14T16:00:00.000Z)
+[09/12/2025, 1:33:17 pm] [INFO] Navigating to 4D draw: Wed, 12 Nov 2025
+[09/12/2025, 1:33:18 pm] [INFO] Scraped 4D draw 5404 (2025-11-11T16:00:00.000Z)
+[09/12/2025, 1:33:18 pm] [INFO] Navigating to 4D draw: Sun, 09 Nov 2025
+[09/12/2025, 1:33:19 pm] [INFO] Scraped 4D draw 5403 (2025-11-08T16:00:00.000Z)
+[09/12/2025, 1:33:19 pm] [INFO] Navigating to 4D draw: Sat, 08 Nov 2025
+[09/12/2025, 1:33:20 pm] [INFO] Scraped 4D draw 5402 (2025-11-07T16:00:00.000Z)
+[09/12/2025, 1:33:20 pm] [INFO] Navigating to 4D draw: Wed, 05 Nov 2025
+[09/12/2025, 1:33:21 pm] [INFO] Scraped 4D draw 5401 (2025-11-04T16:00:00.000Z)
+[09/12/2025, 1:33:21 pm] [INFO] Navigating to 4D draw: Sun, 02 Nov 2025
+[09/12/2025, 1:33:22 pm] [INFO] Scraped 4D draw 5400 (2025-11-01T16:00:00.000Z)
+[09/12/2025, 1:33:22 pm] [INFO] Updated 4D draw 5415
+[09/12/2025, 1:33:22 pm] [INFO] Inserted new 4D draw 5414
+[09/12/2025, 1:33:22 pm] [INFO] Inserted new 4D draw 5413
+[09/12/2025, 1:33:22 pm] [INFO] Updated 4D draw 5412
+[09/12/2025, 1:33:22 pm] [INFO] Inserted new 4D draw 5411
+[09/12/2025, 1:33:22 pm] [INFO] Inserted new 4D draw 5410
+[09/12/2025, 1:33:22 pm] [INFO] Inserted new 4D draw 5409
+[09/12/2025, 1:33:22 pm] [INFO] Inserted new 4D draw 5408
+[09/12/2025, 1:33:22 pm] [INFO] Inserted new 4D draw 5407
+[09/12/2025, 1:33:22 pm] [INFO] Inserted new 4D draw 5406
+[09/12/2025, 1:33:22 pm] [INFO] Inserted new 4D draw 5405
+[09/12/2025, 1:33:22 pm] [INFO] Inserted new 4D draw 5404
+[09/12/2025, 1:33:22 pm] [INFO] Inserted new 4D draw 5403
+[09/12/2025, 1:33:22 pm] [INFO] Inserted new 4D draw 5402
+[09/12/2025, 1:33:22 pm] [INFO] Inserted new 4D draw 5401
+[09/12/2025, 1:33:22 pm] [INFO] Inserted new 4D draw 5400
+[09/12/2025, 1:33:22 pm] [INFO] Starting Toto scrape...
+[09/12/2025, 1:33:22 pm] [INFO] Navigating to Toto results page...
+[09/12/2025, 1:33:23 pm] [INFO] Found 313 draw options for Toto.
+[09/12/2025, 1:33:23 pm] [INFO] Navigating to Toto draw: Mon, 08 Dec 2025
+[09/12/2025, 1:33:33 pm] [WARN] Timeout waiting for content update, continuing...
+[09/12/2025, 1:33:33 pm] [INFO] Scraped Toto draw 4137
+[09/12/2025, 1:33:33 pm] [INFO] Navigating to Toto draw: Thu, 04 Dec 2025
+[09/12/2025, 1:33:34 pm] [INFO] Scraped Toto draw 4136
+[09/12/2025, 1:33:34 pm] [INFO] Navigating to Toto draw: Mon, 01 Dec 2025
+[09/12/2025, 1:33:35 pm] [INFO] Scraped Toto draw 4135
+[09/12/2025, 1:33:35 pm] [INFO] Navigating to Toto draw: Thu, 27 Nov 2025
+[09/12/2025, 1:33:36 pm] [INFO] Scraped Toto draw 4134
+[09/12/2025, 1:33:36 pm] [INFO] Navigating to Toto draw: Mon, 24 Nov 2025
+[09/12/2025, 1:33:37 pm] [INFO] Scraped Toto draw 4133
+[09/12/2025, 1:33:37 pm] [INFO] Navigating to Toto draw: Thu, 20 Nov 2025
+[09/12/2025, 1:33:37 pm] [INFO] Scraped Toto draw 4132
+[09/12/2025, 1:33:37 pm] [INFO] Navigating to Toto draw: Mon, 17 Nov 2025
+[09/12/2025, 1:33:38 pm] [INFO] Scraped Toto draw 4131
+[09/12/2025, 1:33:38 pm] [INFO] Navigating to Toto draw: Thu, 13 Nov 2025
+[09/12/2025, 1:33:39 pm] [INFO] Scraped Toto draw 4130
+[09/12/2025, 1:33:39 pm] [INFO] Navigating to Toto draw: Mon, 10 Nov 2025
+[09/12/2025, 1:33:40 pm] [INFO] Scraped Toto draw 4129
+[09/12/2025, 1:33:40 pm] [INFO] Navigating to Toto draw: Thu, 06 Nov 2025
+[09/12/2025, 1:33:41 pm] [INFO] Scraped Toto draw 4128
+[09/12/2025, 1:33:41 pm] [INFO] Navigating to Toto draw: Mon, 03 Nov 2025
+[09/12/2025, 1:33:42 pm] [INFO] Scraped Toto draw 4127
+[09/12/2025, 1:33:42 pm] [INFO] Updated Toto draw 4137
+[09/12/2025, 1:33:42 pm] [INFO] Updated Toto draw 4136
+[09/12/2025, 1:33:42 pm] [INFO] Inserted new Toto draw 4135
+[09/12/2025, 1:33:42 pm] [INFO] Updated Toto draw 4134
+[09/12/2025, 1:33:42 pm] [INFO] Inserted new Toto draw 4133
+[09/12/2025, 1:33:42 pm] [INFO] Inserted new Toto draw 4132
+[09/12/2025, 1:33:42 pm] [INFO] Inserted new Toto draw 4131
+[09/12/2025, 1:33:42 pm] [INFO] Inserted new Toto draw 4130
+[09/12/2025, 1:33:42 pm] [INFO] Inserted new Toto draw 4129
+[09/12/2025, 1:33:42 pm] [INFO] Inserted new Toto draw 4128
+[09/12/2025, 1:33:42 pm] [INFO] Inserted new Toto draw 4127
+[09/12/2025, 1:33:42 pm] [INFO] Starting Sweep scrape...
+[09/12/2025, 1:33:42 pm] [INFO] Navigating to Sweep results page...
+[09/12/2025, 1:33:43 pm] [INFO] Found 37 draw options for Sweep.
+[09/12/2025, 1:33:43 pm] [INFO] Navigating to Sweep draw: Wed, 03 Dec 2025
+[09/12/2025, 1:33:44 pm] [INFO] Scraped Sweep draw 1085
+[09/12/2025, 1:33:44 pm] [INFO] Navigating to Sweep draw: Wed, 05 Nov 2025
+[09/12/2025, 1:33:44 pm] [INFO] Scraped Sweep draw 1084
+[09/12/2025, 1:33:44 pm] [INFO] Updated Sweep draw 1085
+[09/12/2025, 1:33:44 pm] [INFO] Inserted new Sweep draw 1084
+[09/12/2025, 1:33:45 pm] [INFO] Scraping completed. Processed 29 draws.
+[09/12/2025, 6:48:03 pm] [INFO] Starting scraper run...
+[09/12/2025, 6:48:08 pm] [INFO] Starting 4D scrape...
+[09/12/2025, 6:48:08 pm] [INFO] Navigating to 4D results page...
+[09/12/2025, 6:48:12 pm] [INFO] Found 470 draw options for 4D.
+[09/12/2025, 6:48:12 pm] [INFO] Filtered to 16 options based on date range.
+[09/12/2025, 6:48:12 pm] [INFO] Navigating to 4D draw: Sun, 07 Dec 2025
+[09/12/2025, 6:48:22 pm] [WARN] Timeout waiting for content update, continuing...
+[09/12/2025, 6:48:22 pm] [INFO] Scraped 4D draw 5415 (2025-12-07)
+[09/12/2025, 6:48:22 pm] [INFO] Navigating to 4D draw: Sat, 06 Dec 2025
+[09/12/2025, 6:48:23 pm] [INFO] Scraped 4D draw 5414 (2025-12-06)
+[09/12/2025, 6:48:23 pm] [INFO] Navigating to 4D draw: Wed, 03 Dec 2025
+[09/12/2025, 6:48:25 pm] [INFO] Scraped 4D draw 5413 (2025-12-03)
+[09/12/2025, 6:48:25 pm] [INFO] Navigating to 4D draw: Sun, 30 Nov 2025
+[09/12/2025, 6:48:26 pm] [INFO] Scraped 4D draw 5412 (2025-11-30)
+[09/12/2025, 6:48:26 pm] [INFO] Navigating to 4D draw: Sat, 29 Nov 2025
+[09/12/2025, 6:48:27 pm] [INFO] Scraped 4D draw 5411 (2025-11-29)
+[09/12/2025, 6:48:27 pm] [INFO] Navigating to 4D draw: Wed, 26 Nov 2025
+[09/12/2025, 6:48:30 pm] [INFO] Scraped 4D draw 5410 (2025-11-26)
+[09/12/2025, 6:48:30 pm] [INFO] Navigating to 4D draw: Sun, 23 Nov 2025
+[09/12/2025, 6:48:31 pm] [INFO] Scraped 4D draw 5409 (2025-11-23)
+[09/12/2025, 6:48:31 pm] [INFO] Navigating to 4D draw: Sat, 22 Nov 2025
+[09/12/2025, 6:48:32 pm] [INFO] Scraped 4D draw 5408 (2025-11-22)
+[09/12/2025, 6:48:33 pm] [INFO] Navigating to 4D draw: Wed, 19 Nov 2025
+[09/12/2025, 6:48:33 pm] [INFO] Scraped 4D draw 5407 (2025-11-19)
+[09/12/2025, 6:48:34 pm] [INFO] Navigating to 4D draw: Sun, 16 Nov 2025
+[09/12/2025, 6:48:35 pm] [INFO] Scraped 4D draw 5406 (2025-11-16)
+[09/12/2025, 6:48:35 pm] [INFO] Navigating to 4D draw: Sat, 15 Nov 2025
+[09/12/2025, 6:48:36 pm] [INFO] Scraped 4D draw 5405 (2025-11-15)
+[09/12/2025, 6:48:36 pm] [INFO] Navigating to 4D draw: Wed, 12 Nov 2025
+[09/12/2025, 6:48:38 pm] [INFO] Scraped 4D draw 5404 (2025-11-12)
+[09/12/2025, 6:48:38 pm] [INFO] Navigating to 4D draw: Sun, 09 Nov 2025
+[09/12/2025, 6:48:39 pm] [INFO] Scraped 4D draw 5403 (2025-11-09)
+[09/12/2025, 6:48:39 pm] [INFO] Navigating to 4D draw: Sat, 08 Nov 2025
+[09/12/2025, 6:48:40 pm] [INFO] Scraped 4D draw 5402 (2025-11-08)
+[09/12/2025, 6:48:41 pm] [INFO] Navigating to 4D draw: Wed, 05 Nov 2025
+[09/12/2025, 6:48:42 pm] [INFO] Scraped 4D draw 5401 (2025-11-05)
+[09/12/2025, 6:48:42 pm] [INFO] Navigating to 4D draw: Sun, 02 Nov 2025
+[09/12/2025, 6:48:43 pm] [INFO] Scraped 4D draw 5400 (2025-11-02)
+[09/12/2025, 6:48:43 pm] [INFO] Inserted new 4D draw 5415
+[09/12/2025, 6:48:43 pm] [INFO] Inserted new 4D draw 5414
+[09/12/2025, 6:48:43 pm] [INFO] Inserted new 4D draw 5413
+[09/12/2025, 6:48:43 pm] [INFO] Inserted new 4D draw 5412
+[09/12/2025, 6:48:43 pm] [INFO] Inserted new 4D draw 5411
+[09/12/2025, 6:48:43 pm] [INFO] Inserted new 4D draw 5410
+[09/12/2025, 6:48:43 pm] [INFO] Inserted new 4D draw 5409
+[09/12/2025, 6:48:43 pm] [INFO] Inserted new 4D draw 5408
+[09/12/2025, 6:48:43 pm] [INFO] Inserted new 4D draw 5407
+[09/12/2025, 6:48:43 pm] [INFO] Inserted new 4D draw 5406
+[09/12/2025, 6:48:43 pm] [INFO] Inserted new 4D draw 5405
+[09/12/2025, 6:48:43 pm] [INFO] Inserted new 4D draw 5404
+[09/12/2025, 6:48:43 pm] [INFO] Inserted new 4D draw 5403
+[09/12/2025, 6:48:43 pm] [INFO] Inserted new 4D draw 5402
+[09/12/2025, 6:48:43 pm] [INFO] Starting scraper run...
+[09/12/2025, 6:48:43 pm] [INFO] Inserted new 4D draw 5401
+[09/12/2025, 6:48:43 pm] [INFO] Inserted new 4D draw 5400
+[09/12/2025, 6:48:43 pm] [INFO] Starting Toto scrape...
+[09/12/2025, 6:48:44 pm] [INFO] Navigating to Toto results page...
+[09/12/2025, 6:48:45 pm] [INFO] Found 313 draw options for Toto.
+[09/12/2025, 6:48:45 pm] [INFO] Navigating to Toto draw: Mon, 08 Dec 2025
+[09/12/2025, 6:48:48 pm] [INFO] Starting 4D scrape...
+[09/12/2025, 6:48:48 pm] [INFO] Navigating to 4D results page...
+[09/12/2025, 6:48:51 pm] [INFO] Found 470 draw options for 4D.
+[09/12/2025, 6:48:51 pm] [INFO] Filtered to 16 options based on date range.
+[09/12/2025, 6:48:51 pm] [INFO] Navigating to 4D draw: Sun, 07 Dec 2025
+[09/12/2025, 6:48:55 pm] [WARN] Timeout waiting for content update, continuing...
+[09/12/2025, 6:48:55 pm] [INFO] Scraped Toto draw 4137
+[09/12/2025, 6:48:55 pm] [INFO] Navigating to Toto draw: Thu, 04 Dec 2025
+[09/12/2025, 6:48:56 pm] [INFO] Scraped Toto draw 4136
+[09/12/2025, 6:48:56 pm] [INFO] Navigating to Toto draw: Mon, 01 Dec 2025
+[09/12/2025, 6:48:57 pm] [INFO] Scraped Toto draw 4135
+[09/12/2025, 6:48:57 pm] [INFO] Navigating to Toto draw: Thu, 27 Nov 2025
+[09/12/2025, 6:48:58 pm] [INFO] Scraped Toto draw 4134
+[09/12/2025, 6:48:58 pm] [INFO] Navigating to Toto draw: Mon, 24 Nov 2025
+[09/12/2025, 6:48:59 pm] [INFO] Scraped Toto draw 4133
+[09/12/2025, 6:49:00 pm] [INFO] Navigating to Toto draw: Thu, 20 Nov 2025
+[09/12/2025, 6:49:01 pm] [INFO] Scraped Toto draw 4132
+[09/12/2025, 6:49:01 pm] [INFO] Navigating to Toto draw: Mon, 17 Nov 2025
+[09/12/2025, 6:49:01 pm] [WARN] Timeout waiting for content update, continuing...
+[09/12/2025, 6:49:01 pm] [INFO] Scraped 4D draw 5415 (2025-12-07)
+[09/12/2025, 6:49:01 pm] [INFO] Navigating to 4D draw: Sat, 06 Dec 2025
+[09/12/2025, 6:49:02 pm] [INFO] Scraped Toto draw 4131
+[09/12/2025, 6:49:02 pm] [INFO] Navigating to Toto draw: Thu, 13 Nov 2025
+[09/12/2025, 6:49:03 pm] [INFO] Scraped 4D draw 5414 (2025-12-06)
+[09/12/2025, 6:49:03 pm] [INFO] Scraped Toto draw 4130
+[09/12/2025, 6:49:03 pm] [INFO] Navigating to 4D draw: Wed, 03 Dec 2025
+[09/12/2025, 6:49:03 pm] [INFO] Navigating to Toto draw: Mon, 10 Nov 2025
+[09/12/2025, 6:49:04 pm] [INFO] Scraped Toto draw 4129
+[09/12/2025, 6:49:04 pm] [INFO] Navigating to Toto draw: Thu, 06 Nov 2025
+[09/12/2025, 6:49:04 pm] [INFO] Scraped 4D draw 5413 (2025-12-03)
+[09/12/2025, 6:49:04 pm] [INFO] Navigating to 4D draw: Sun, 30 Nov 2025
+[09/12/2025, 6:49:05 pm] [INFO] Scraped Toto draw 4128
+[09/12/2025, 6:49:05 pm] [INFO] Scraped 4D draw 5412 (2025-11-30)
+[09/12/2025, 6:49:05 pm] [INFO] Navigating to Toto draw: Mon, 03 Nov 2025
+[09/12/2025, 6:49:06 pm] [INFO] Navigating to 4D draw: Sat, 29 Nov 2025
+[09/12/2025, 6:49:07 pm] [INFO] Scraped Toto draw 4127
+[09/12/2025, 6:49:07 pm] [INFO] Scraped 4D draw 5411 (2025-11-29)
+[09/12/2025, 6:49:07 pm] [INFO] Inserted new Toto draw 4137
+[09/12/2025, 6:49:07 pm] [INFO] Inserted new Toto draw 4136
+[09/12/2025, 6:49:07 pm] [INFO] Inserted new Toto draw 4135
+[09/12/2025, 6:49:07 pm] [INFO] Inserted new Toto draw 4134
+[09/12/2025, 6:49:07 pm] [INFO] Inserted new Toto draw 4133
+[09/12/2025, 6:49:07 pm] [INFO] Navigating to 4D draw: Wed, 26 Nov 2025
+[09/12/2025, 6:49:07 pm] [INFO] Inserted new Toto draw 4132
+[09/12/2025, 6:49:07 pm] [INFO] Inserted new Toto draw 4131
+[09/12/2025, 6:49:07 pm] [INFO] Inserted new Toto draw 4130
+[09/12/2025, 6:49:07 pm] [INFO] Inserted new Toto draw 4129
+[09/12/2025, 6:49:07 pm] [INFO] Inserted new Toto draw 4128
+[09/12/2025, 6:49:07 pm] [INFO] Inserted new Toto draw 4127
+[09/12/2025, 6:49:07 pm] [INFO] Starting Sweep scrape...
+[09/12/2025, 6:49:07 pm] [INFO] Navigating to Sweep results page...
+[09/12/2025, 6:49:08 pm] [INFO] Scraped 4D draw 5410 (2025-11-26)
+[09/12/2025, 6:49:08 pm] [INFO] Found 37 draw options for Sweep.
+[09/12/2025, 6:49:08 pm] [INFO] Navigating to 4D draw: Sun, 23 Nov 2025
+[09/12/2025, 6:49:09 pm] [INFO] Navigating to Sweep draw: Wed, 03 Dec 2025
+[09/12/2025, 6:49:10 pm] [INFO] Scraped 4D draw 5409 (2025-11-23)
+[09/12/2025, 6:49:10 pm] [INFO] Navigating to 4D draw: Sat, 22 Nov 2025
+[09/12/2025, 6:49:11 pm] [INFO] Scraped 4D draw 5408 (2025-11-22)
+[09/12/2025, 6:49:12 pm] [INFO] Navigating to 4D draw: Wed, 19 Nov 2025
+[09/12/2025, 6:49:13 pm] [INFO] Scraped 4D draw 5407 (2025-11-19)
+[09/12/2025, 6:49:13 pm] [INFO] Navigating to 4D draw: Sun, 16 Nov 2025
+[09/12/2025, 6:49:14 pm] [INFO] Scraped 4D draw 5406 (2025-11-16)
+[09/12/2025, 6:49:14 pm] [INFO] Navigating to 4D draw: Sat, 15 Nov 2025
+[09/12/2025, 6:49:15 pm] [INFO] Scraped 4D draw 5405 (2025-11-15)
+[09/12/2025, 6:49:15 pm] [INFO] Navigating to 4D draw: Wed, 12 Nov 2025
+[09/12/2025, 6:49:16 pm] [INFO] Scraped 4D draw 5404 (2025-11-12)
+[09/12/2025, 6:49:16 pm] [INFO] Navigating to 4D draw: Sun, 09 Nov 2025
+[09/12/2025, 6:49:17 pm] [INFO] Scraped 4D draw 5403 (2025-11-09)
+[09/12/2025, 6:49:17 pm] [INFO] Navigating to 4D draw: Sat, 08 Nov 2025
+[09/12/2025, 6:49:18 pm] [INFO] Scraped 4D draw 5402 (2025-11-08)
+[09/12/2025, 6:49:18 pm] [INFO] Navigating to 4D draw: Wed, 05 Nov 2025
+[09/12/2025, 6:49:19 pm] [WARN] Timeout waiting for content update, continuing...
+[09/12/2025, 6:49:19 pm] [INFO] Scraped Sweep draw 1085
+[09/12/2025, 6:49:19 pm] [INFO] Navigating to Sweep draw: Wed, 05 Nov 2025
+[09/12/2025, 6:49:20 pm] [INFO] Scraped 4D draw 5401 (2025-11-05)
+[09/12/2025, 6:49:20 pm] [INFO] Navigating to 4D draw: Sun, 02 Nov 2025
+[09/12/2025, 6:49:21 pm] [INFO] Scraped Sweep draw 1084
+[09/12/2025, 6:49:21 pm] [INFO] Scraped 4D draw 5400 (2025-11-02)
+[09/12/2025, 6:49:21 pm] [INFO] Inserted new Sweep draw 1085
+[09/12/2025, 6:49:21 pm] [INFO] Inserted new Sweep draw 1084
+[09/12/2025, 6:49:21 pm] [INFO] Scraping completed. Processed 29 draws.
+[09/12/2025, 6:49:21 pm] [INFO] Updated 4D draw 5415
+[09/12/2025, 6:49:21 pm] [INFO] Updated 4D draw 5414
+[09/12/2025, 6:49:21 pm] [INFO] Updated 4D draw 5413
+[09/12/2025, 6:49:21 pm] [INFO] Updated 4D draw 5412
+[09/12/2025, 6:49:21 pm] [INFO] Updated 4D draw 5411
+[09/12/2025, 6:49:21 pm] [INFO] Updated 4D draw 5410
+[09/12/2025, 6:49:21 pm] [INFO] Updated 4D draw 5409
+[09/12/2025, 6:49:21 pm] [INFO] Updated 4D draw 5408
+[09/12/2025, 6:49:21 pm] [INFO] Updated 4D draw 5407
+[09/12/2025, 6:49:21 pm] [INFO] Updated 4D draw 5406
+[09/12/2025, 6:49:21 pm] [INFO] Updated 4D draw 5405
+[09/12/2025, 6:49:21 pm] [INFO] Updated 4D draw 5404
+[09/12/2025, 6:49:21 pm] [INFO] Updated 4D draw 5403
+[09/12/2025, 6:49:21 pm] [INFO] Updated 4D draw 5402
+[09/12/2025, 6:49:22 pm] [INFO] Updated 4D draw 5401
+[09/12/2025, 6:49:22 pm] [INFO] Updated 4D draw 5400
+[09/12/2025, 6:49:22 pm] [INFO] Starting Toto scrape...
+[09/12/2025, 6:49:22 pm] [INFO] Navigating to Toto results page...
+[09/12/2025, 6:49:23 pm] [INFO] Found 313 draw options for Toto.
+[09/12/2025, 6:49:23 pm] [INFO] Navigating to Toto draw: Mon, 08 Dec 2025
+[09/12/2025, 6:49:33 pm] [WARN] Timeout waiting for content update, continuing...
+[09/12/2025, 6:49:33 pm] [INFO] Scraped Toto draw 4137
+[09/12/2025, 6:49:33 pm] [INFO] Navigating to Toto draw: Thu, 04 Dec 2025
+[09/12/2025, 6:49:34 pm] [INFO] Scraped Toto draw 4136
+[09/12/2025, 6:49:34 pm] [INFO] Navigating to Toto draw: Mon, 01 Dec 2025
+[09/12/2025, 6:49:35 pm] [INFO] Scraped Toto draw 4135
+[09/12/2025, 6:49:35 pm] [INFO] Navigating to Toto draw: Thu, 27 Nov 2025
+[09/12/2025, 6:49:36 pm] [INFO] Scraped Toto draw 4134
+[09/12/2025, 6:49:37 pm] [INFO] Navigating to Toto draw: Mon, 24 Nov 2025
+[09/12/2025, 6:49:37 pm] [INFO] Scraped Toto draw 4133
+[09/12/2025, 6:49:38 pm] [INFO] Navigating to Toto draw: Thu, 20 Nov 2025
+[09/12/2025, 6:49:39 pm] [INFO] Scraped Toto draw 4132
+[09/12/2025, 6:49:39 pm] [INFO] Navigating to Toto draw: Mon, 17 Nov 2025
+[09/12/2025, 6:49:40 pm] [INFO] Scraped Toto draw 4131
+[09/12/2025, 6:49:40 pm] [INFO] Navigating to Toto draw: Thu, 13 Nov 2025
+[09/12/2025, 6:49:41 pm] [INFO] Scraped Toto draw 4130
+[09/12/2025, 6:49:41 pm] [INFO] Navigating to Toto draw: Mon, 10 Nov 2025
+[09/12/2025, 6:49:42 pm] [INFO] Scraped Toto draw 4129
+[09/12/2025, 6:49:42 pm] [INFO] Navigating to Toto draw: Thu, 06 Nov 2025
+[09/12/2025, 6:49:43 pm] [INFO] Scraped Toto draw 4128
+[09/12/2025, 6:49:43 pm] [INFO] Navigating to Toto draw: Mon, 03 Nov 2025
+[09/12/2025, 6:49:44 pm] [INFO] Scraped Toto draw 4127
+[09/12/2025, 6:49:44 pm] [INFO] Updated Toto draw 4137
+[09/12/2025, 6:49:44 pm] [INFO] Updated Toto draw 4136
+[09/12/2025, 6:49:44 pm] [INFO] Updated Toto draw 4135
+[09/12/2025, 6:49:45 pm] [INFO] Updated Toto draw 4134
+[09/12/2025, 6:49:45 pm] [INFO] Updated Toto draw 4133
+[09/12/2025, 6:49:45 pm] [INFO] Updated Toto draw 4132
+[09/12/2025, 6:49:45 pm] [INFO] Updated Toto draw 4131
+[09/12/2025, 6:49:45 pm] [INFO] Updated Toto draw 4130
+[09/12/2025, 6:49:45 pm] [INFO] Updated Toto draw 4129
+[09/12/2025, 6:49:45 pm] [INFO] Updated Toto draw 4128
+[09/12/2025, 6:49:45 pm] [INFO] Updated Toto draw 4127
+[09/12/2025, 6:49:45 pm] [INFO] Starting Sweep scrape...
+[09/12/2025, 6:49:45 pm] [INFO] Navigating to Sweep results page...
+[09/12/2025, 6:49:46 pm] [INFO] Found 37 draw options for Sweep.
+[09/12/2025, 6:49:46 pm] [INFO] Navigating to Sweep draw: Wed, 03 Dec 2025
+[09/12/2025, 6:49:57 pm] [WARN] Timeout waiting for content update, continuing...
+[09/12/2025, 6:49:57 pm] [INFO] Scraped Sweep draw 1085
+[09/12/2025, 6:49:57 pm] [INFO] Navigating to Sweep draw: Wed, 05 Nov 2025
+[09/12/2025, 6:49:58 pm] [INFO] Scraped Sweep draw 1084
+[09/12/2025, 6:49:58 pm] [INFO] Updated Sweep draw 1085
+[09/12/2025, 6:49:58 pm] [INFO] Updated Sweep draw 1084
+[09/12/2025, 6:49:58 pm] [INFO] Scraping completed. Processed 29 draws.
+[10/12/2025, 2:41:03 pm] [INFO] [Cron] ============ 4D SCRAPE START (retry 0/96) ============
+[10/12/2025, 2:41:04 pm] [INFO] [Cron] Scraping 4D from http://www.singaporepools.com.sg/en/product/Pages/4d_results.aspx
+[10/12/2025, 2:41:06 pm] [WARN] [Cron] 4D result is for 2025-12-07, not today - result not available yet
+[10/12/2025, 2:41:06 pm] [INFO] [Cron] Will retry 4D (attempt 1/96) in 5 minutes
+[10/12/2025, 7:08:53 pm] [INFO] Starting scraper run...
+[10/12/2025, 7:08:54 pm] [INFO] Starting 4D scrape...
+[10/12/2025, 7:08:54 pm] [INFO] Navigating to 4D results page...
+[10/12/2025, 7:08:56 pm] [INFO] Found 470 draw options for 4D.
+[10/12/2025, 7:08:56 pm] [INFO] Filtered to 17 options based on date range.
+[10/12/2025, 7:08:56 pm] [INFO] Navigating to 4D draw: Wed, 10 Dec 2025
+[10/12/2025, 7:09:06 pm] [WARN] Timeout waiting for content update, continuing...
+[10/12/2025, 7:09:06 pm] [INFO] Scraped 4D draw 5416 (2025-12-10)
+[10/12/2025, 7:09:06 pm] [INFO] Navigating to 4D draw: Sun, 07 Dec 2025
+[10/12/2025, 7:09:08 pm] [INFO] Scraped 4D draw 5415 (2025-12-07)
+[10/12/2025, 7:09:08 pm] [INFO] Navigating to 4D draw: Sat, 06 Dec 2025
+[10/12/2025, 7:09:09 pm] [INFO] Scraped 4D draw 5414 (2025-12-06)
+[10/12/2025, 7:09:09 pm] [INFO] Navigating to 4D draw: Wed, 03 Dec 2025
+[10/12/2025, 7:09:11 pm] [INFO] Scraped 4D draw 5413 (2025-12-03)
+[10/12/2025, 7:09:11 pm] [INFO] Navigating to 4D draw: Sun, 30 Nov 2025
+[10/12/2025, 7:09:13 pm] [INFO] Scraped 4D draw 5412 (2025-11-30)
+[10/12/2025, 7:09:13 pm] [INFO] Navigating to 4D draw: Sat, 29 Nov 2025
+[10/12/2025, 7:09:14 pm] [INFO] Scraped 4D draw 5411 (2025-11-29)
+[10/12/2025, 7:09:14 pm] [INFO] Navigating to 4D draw: Wed, 26 Nov 2025
+[10/12/2025, 7:09:16 pm] [INFO] Scraped 4D draw 5410 (2025-11-26)
+[10/12/2025, 7:09:16 pm] [INFO] Navigating to 4D draw: Sun, 23 Nov 2025
+[10/12/2025, 7:09:17 pm] [INFO] Scraped 4D draw 5409 (2025-11-23)
+[10/12/2025, 7:09:17 pm] [INFO] Navigating to 4D draw: Sat, 22 Nov 2025
+[10/12/2025, 7:09:19 pm] [INFO] Scraped 4D draw 5408 (2025-11-22)
+[10/12/2025, 7:09:19 pm] [INFO] Navigating to 4D draw: Wed, 19 Nov 2025
+[10/12/2025, 7:09:20 pm] [INFO] Scraped 4D draw 5407 (2025-11-19)
+[10/12/2025, 7:09:20 pm] [INFO] Navigating to 4D draw: Sun, 16 Nov 2025
+[10/12/2025, 7:09:22 pm] [INFO] Scraped 4D draw 5406 (2025-11-16)
+[10/12/2025, 7:09:22 pm] [INFO] Navigating to 4D draw: Sat, 15 Nov 2025
+[10/12/2025, 7:09:23 pm] [INFO] Scraped 4D draw 5405 (2025-11-15)
+[10/12/2025, 7:09:23 pm] [INFO] Navigating to 4D draw: Wed, 12 Nov 2025
+[10/12/2025, 7:09:25 pm] [INFO] Scraped 4D draw 5404 (2025-11-12)
+[10/12/2025, 7:09:25 pm] [INFO] Navigating to 4D draw: Sun, 09 Nov 2025
+[10/12/2025, 7:09:26 pm] [INFO] Scraped 4D draw 5403 (2025-11-09)
+[10/12/2025, 7:09:27 pm] [INFO] Navigating to 4D draw: Sat, 08 Nov 2025
+[10/12/2025, 7:09:29 pm] [INFO] Scraped 4D draw 5402 (2025-11-08)
+[10/12/2025, 7:09:29 pm] [INFO] Navigating to 4D draw: Wed, 05 Nov 2025
+[10/12/2025, 7:09:30 pm] [INFO] Scraped 4D draw 5401 (2025-11-05)
+[10/12/2025, 7:09:30 pm] [INFO] Navigating to 4D draw: Sun, 02 Nov 2025
+[10/12/2025, 7:09:32 pm] [INFO] Scraped 4D draw 5400 (2025-11-02)
+[10/12/2025, 7:09:32 pm] [INFO] Inserted new 4D draw 5416
+[10/12/2025, 7:09:32 pm] [INFO] [Cloudflare] Purge request: 4D result update | Strategy: files | URLs: 5
+[10/12/2025, 7:09:33 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/4d, https://sg.pwedeh.com/singapore/4d/history, https://sg.pwedeh.com/singapore/4d/2025-12-10
+[10/12/2025, 7:09:33 pm] [INFO] Inserted new 4D draw 5415
+[10/12/2025, 7:09:33 pm] [INFO] [Cloudflare] Purge request: 4D result update | Strategy: files | URLs: 5
+[10/12/2025, 7:09:33 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/4d, https://sg.pwedeh.com/singapore/4d/history, https://sg.pwedeh.com/singapore/4d/2025-12-07
+[10/12/2025, 7:09:33 pm] [INFO] Inserted new 4D draw 5414
+[10/12/2025, 7:09:33 pm] [INFO] [Cloudflare] Purge request: 4D result update | Strategy: files | URLs: 5
+[10/12/2025, 7:09:33 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/4d, https://sg.pwedeh.com/singapore/4d/history, https://sg.pwedeh.com/singapore/4d/2025-12-06
+[10/12/2025, 7:09:33 pm] [INFO] Inserted new 4D draw 5413
+[10/12/2025, 7:09:33 pm] [INFO] [Cloudflare] Purge request: 4D result update | Strategy: files | URLs: 5
+[10/12/2025, 7:09:34 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/4d, https://sg.pwedeh.com/singapore/4d/history, https://sg.pwedeh.com/singapore/4d/2025-12-03
+[10/12/2025, 7:09:34 pm] [INFO] Inserted new 4D draw 5412
+[10/12/2025, 7:09:34 pm] [INFO] [Cloudflare] Purge request: 4D result update | Strategy: files | URLs: 5
+[10/12/2025, 7:09:34 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/4d, https://sg.pwedeh.com/singapore/4d/history, https://sg.pwedeh.com/singapore/4d/2025-11-30
+[10/12/2025, 7:09:34 pm] [INFO] Inserted new 4D draw 5411
+[10/12/2025, 7:09:34 pm] [INFO] [Cloudflare] Purge request: 4D result update | Strategy: files | URLs: 5
+[10/12/2025, 7:09:34 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/4d, https://sg.pwedeh.com/singapore/4d/history, https://sg.pwedeh.com/singapore/4d/2025-11-29
+[10/12/2025, 7:09:34 pm] [INFO] Inserted new 4D draw 5410
+[10/12/2025, 7:09:34 pm] [INFO] [Cloudflare] Purge request: 4D result update | Strategy: files | URLs: 5
+[10/12/2025, 7:09:34 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/4d, https://sg.pwedeh.com/singapore/4d/history, https://sg.pwedeh.com/singapore/4d/2025-11-26
+[10/12/2025, 7:09:35 pm] [INFO] Inserted new 4D draw 5409
+[10/12/2025, 7:09:35 pm] [INFO] [Cloudflare] Purge request: 4D result update | Strategy: files | URLs: 5
+[10/12/2025, 7:09:35 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/4d, https://sg.pwedeh.com/singapore/4d/history, https://sg.pwedeh.com/singapore/4d/2025-11-23
+[10/12/2025, 7:09:35 pm] [INFO] Inserted new 4D draw 5408
+[10/12/2025, 7:09:35 pm] [INFO] [Cloudflare] Purge request: 4D result update | Strategy: files | URLs: 5
+[10/12/2025, 7:09:36 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/4d, https://sg.pwedeh.com/singapore/4d/history, https://sg.pwedeh.com/singapore/4d/2025-11-22
+[10/12/2025, 7:09:36 pm] [INFO] Inserted new 4D draw 5407
+[10/12/2025, 7:09:36 pm] [INFO] [Cloudflare] Purge request: 4D result update | Strategy: files | URLs: 5
+[10/12/2025, 7:09:36 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/4d, https://sg.pwedeh.com/singapore/4d/history, https://sg.pwedeh.com/singapore/4d/2025-11-19
+[10/12/2025, 7:09:36 pm] [INFO] Inserted new 4D draw 5406
+[10/12/2025, 7:09:36 pm] [INFO] [Cloudflare] Purge request: 4D result update | Strategy: files | URLs: 5
+[10/12/2025, 7:09:36 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/4d, https://sg.pwedeh.com/singapore/4d/history, https://sg.pwedeh.com/singapore/4d/2025-11-16
+[10/12/2025, 7:09:36 pm] [INFO] Inserted new 4D draw 5405
+[10/12/2025, 7:09:36 pm] [INFO] [Cloudflare] Purge request: 4D result update | Strategy: files | URLs: 5
+[10/12/2025, 7:09:37 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/4d, https://sg.pwedeh.com/singapore/4d/history, https://sg.pwedeh.com/singapore/4d/2025-11-15
+[10/12/2025, 7:09:37 pm] [INFO] Inserted new 4D draw 5404
+[10/12/2025, 7:09:37 pm] [INFO] [Cloudflare] Purge request: 4D result update | Strategy: files | URLs: 5
+[10/12/2025, 7:09:37 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/4d, https://sg.pwedeh.com/singapore/4d/history, https://sg.pwedeh.com/singapore/4d/2025-11-12
+[10/12/2025, 7:09:37 pm] [INFO] Inserted new 4D draw 5403
+[10/12/2025, 7:09:37 pm] [INFO] [Cloudflare] Purge request: 4D result update | Strategy: files | URLs: 5
+[10/12/2025, 7:09:38 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/4d, https://sg.pwedeh.com/singapore/4d/history, https://sg.pwedeh.com/singapore/4d/2025-11-09
+[10/12/2025, 7:09:38 pm] [INFO] Inserted new 4D draw 5402
+[10/12/2025, 7:09:38 pm] [INFO] [Cloudflare] Purge request: 4D result update | Strategy: files | URLs: 5
+[10/12/2025, 7:09:38 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/4d, https://sg.pwedeh.com/singapore/4d/history, https://sg.pwedeh.com/singapore/4d/2025-11-08
+[10/12/2025, 7:09:38 pm] [INFO] Inserted new 4D draw 5401
+[10/12/2025, 7:09:38 pm] [INFO] [Cloudflare] Purge request: 4D result update | Strategy: files | URLs: 5
+[10/12/2025, 7:09:38 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/4d, https://sg.pwedeh.com/singapore/4d/history, https://sg.pwedeh.com/singapore/4d/2025-11-05
+[10/12/2025, 7:09:38 pm] [INFO] Inserted new 4D draw 5400
+[10/12/2025, 7:09:38 pm] [INFO] [Cloudflare] Purge request: 4D result update | Strategy: files | URLs: 5
+[10/12/2025, 7:09:39 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/4d, https://sg.pwedeh.com/singapore/4d/history, https://sg.pwedeh.com/singapore/4d/2025-11-02
+[10/12/2025, 7:09:39 pm] [INFO] Starting Toto scrape...
+[10/12/2025, 7:09:39 pm] [INFO] Navigating to Toto results page...
+[10/12/2025, 7:09:40 pm] [INFO] Found 313 draw options for Toto.
+[10/12/2025, 7:09:40 pm] [INFO] Navigating to Toto draw: Mon, 08 Dec 2025
+[10/12/2025, 7:09:50 pm] [WARN] Timeout waiting for content update, continuing...
+[10/12/2025, 7:09:50 pm] [INFO] Scraped Toto draw 4137
+[10/12/2025, 7:09:51 pm] [INFO] Navigating to Toto draw: Thu, 04 Dec 2025
+[10/12/2025, 7:09:52 pm] [INFO] Scraped Toto draw 4136
+[10/12/2025, 7:09:52 pm] [INFO] Navigating to Toto draw: Mon, 01 Dec 2025
+[10/12/2025, 7:09:53 pm] [INFO] Scraped Toto draw 4135
+[10/12/2025, 7:09:53 pm] [INFO] Navigating to Toto draw: Thu, 27 Nov 2025
+[10/12/2025, 7:09:54 pm] [INFO] Scraped Toto draw 4134
+[10/12/2025, 7:09:54 pm] [INFO] Navigating to Toto draw: Mon, 24 Nov 2025
+[10/12/2025, 7:09:55 pm] [INFO] Scraped Toto draw 4133
+[10/12/2025, 7:09:55 pm] [INFO] Navigating to Toto draw: Thu, 20 Nov 2025
+[10/12/2025, 7:09:57 pm] [INFO] Scraped Toto draw 4132
+[10/12/2025, 7:09:58 pm] [INFO] Navigating to Toto draw: Mon, 17 Nov 2025
+[10/12/2025, 7:09:59 pm] [INFO] Scraped Toto draw 4131
+[10/12/2025, 7:09:59 pm] [INFO] Navigating to Toto draw: Thu, 13 Nov 2025
+[10/12/2025, 7:10:00 pm] [INFO] Scraped Toto draw 4130
+[10/12/2025, 7:10:00 pm] [INFO] Navigating to Toto draw: Mon, 10 Nov 2025
+[10/12/2025, 7:10:01 pm] [INFO] Scraped Toto draw 4129
+[10/12/2025, 7:10:01 pm] [INFO] Navigating to Toto draw: Thu, 06 Nov 2025
+[10/12/2025, 7:10:02 pm] [INFO] Scraped Toto draw 4128
+[10/12/2025, 7:10:02 pm] [INFO] Navigating to Toto draw: Mon, 03 Nov 2025
+[10/12/2025, 7:10:03 pm] [INFO] Scraped Toto draw 4127
+[10/12/2025, 7:10:03 pm] [INFO] Inserted new Toto draw 4137
+[10/12/2025, 7:10:03 pm] [INFO] [Cloudflare] Purge request: Toto result update | Strategy: files | URLs: 6
+[10/12/2025, 7:10:04 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/toto, https://sg.pwedeh.com/singapore/toto/history, https://sg.pwedeh.com/singapore/toto/2025-12-08, https://sg.pwedeh.com/singapore/jackpot
+[10/12/2025, 7:10:04 pm] [INFO] Inserted new Toto draw 4136
+[10/12/2025, 7:10:04 pm] [INFO] [Cloudflare] Purge request: Toto result update | Strategy: files | URLs: 6
+[10/12/2025, 7:10:05 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/toto, https://sg.pwedeh.com/singapore/toto/history, https://sg.pwedeh.com/singapore/toto/2025-12-04, https://sg.pwedeh.com/singapore/jackpot
+[10/12/2025, 7:10:05 pm] [INFO] Inserted new Toto draw 4135
+[10/12/2025, 7:10:05 pm] [INFO] [Cloudflare] Purge request: Toto result update | Strategy: files | URLs: 6
+[10/12/2025, 7:10:05 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/toto, https://sg.pwedeh.com/singapore/toto/history, https://sg.pwedeh.com/singapore/toto/2025-12-01, https://sg.pwedeh.com/singapore/jackpot
+[10/12/2025, 7:10:05 pm] [INFO] Inserted new Toto draw 4134
+[10/12/2025, 7:10:05 pm] [INFO] [Cloudflare] Purge request: Toto result update | Strategy: files | URLs: 6
+[10/12/2025, 7:10:06 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/toto, https://sg.pwedeh.com/singapore/toto/history, https://sg.pwedeh.com/singapore/toto/2025-11-27, https://sg.pwedeh.com/singapore/jackpot
+[10/12/2025, 7:10:06 pm] [INFO] Inserted new Toto draw 4133
+[10/12/2025, 7:10:06 pm] [INFO] [Cloudflare] Purge request: Toto result update | Strategy: files | URLs: 6
+[10/12/2025, 7:10:06 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/toto, https://sg.pwedeh.com/singapore/toto/history, https://sg.pwedeh.com/singapore/toto/2025-11-24, https://sg.pwedeh.com/singapore/jackpot
+[10/12/2025, 7:10:06 pm] [INFO] Inserted new Toto draw 4132
+[10/12/2025, 7:10:06 pm] [INFO] [Cloudflare] Purge request: Toto result update | Strategy: files | URLs: 6
+[10/12/2025, 7:10:07 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/toto, https://sg.pwedeh.com/singapore/toto/history, https://sg.pwedeh.com/singapore/toto/2025-11-20, https://sg.pwedeh.com/singapore/jackpot
+[10/12/2025, 7:10:07 pm] [INFO] Inserted new Toto draw 4131
+[10/12/2025, 7:10:07 pm] [INFO] [Cloudflare] Purge request: Toto result update | Strategy: files | URLs: 6
+[10/12/2025, 7:10:07 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/toto, https://sg.pwedeh.com/singapore/toto/history, https://sg.pwedeh.com/singapore/toto/2025-11-17, https://sg.pwedeh.com/singapore/jackpot
+[10/12/2025, 7:10:07 pm] [INFO] Inserted new Toto draw 4130
+[10/12/2025, 7:10:07 pm] [INFO] [Cloudflare] Purge request: Toto result update | Strategy: files | URLs: 6
+[10/12/2025, 7:10:07 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/toto, https://sg.pwedeh.com/singapore/toto/history, https://sg.pwedeh.com/singapore/toto/2025-11-13, https://sg.pwedeh.com/singapore/jackpot
+[10/12/2025, 7:10:07 pm] [INFO] Inserted new Toto draw 4129
+[10/12/2025, 7:10:07 pm] [INFO] [Cloudflare] Purge request: Toto result update | Strategy: files | URLs: 6
+[10/12/2025, 7:10:08 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/toto, https://sg.pwedeh.com/singapore/toto/history, https://sg.pwedeh.com/singapore/toto/2025-11-10, https://sg.pwedeh.com/singapore/jackpot
+[10/12/2025, 7:10:08 pm] [INFO] Inserted new Toto draw 4128
+[10/12/2025, 7:10:08 pm] [INFO] [Cloudflare] Purge request: Toto result update | Strategy: files | URLs: 6
+[10/12/2025, 7:10:08 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/toto, https://sg.pwedeh.com/singapore/toto/history, https://sg.pwedeh.com/singapore/toto/2025-11-06, https://sg.pwedeh.com/singapore/jackpot
+[10/12/2025, 7:10:08 pm] [INFO] Inserted new Toto draw 4127
+[10/12/2025, 7:10:08 pm] [INFO] [Cloudflare] Purge request: Toto result update | Strategy: files | URLs: 6
+[10/12/2025, 7:10:09 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/toto, https://sg.pwedeh.com/singapore/toto/history, https://sg.pwedeh.com/singapore/toto/2025-11-03, https://sg.pwedeh.com/singapore/jackpot
+[10/12/2025, 7:10:09 pm] [INFO] Starting Sweep scrape...
+[10/12/2025, 7:10:09 pm] [INFO] Navigating to Sweep results page...
+[10/12/2025, 7:10:10 pm] [INFO] Found 37 draw options for Sweep.
+[10/12/2025, 7:10:10 pm] [INFO] Navigating to Sweep draw: Wed, 03 Dec 2025
+[10/12/2025, 7:10:20 pm] [WARN] Timeout waiting for content update, continuing...
+[10/12/2025, 7:10:20 pm] [INFO] Scraped Sweep draw 1085
+[10/12/2025, 7:10:20 pm] [INFO] Navigating to Sweep draw: Wed, 05 Nov 2025
+[10/12/2025, 7:10:22 pm] [INFO] Scraped Sweep draw 1084
+[10/12/2025, 7:10:22 pm] [INFO] Inserted new Sweep draw 1085
+[10/12/2025, 7:10:22 pm] [INFO] [Cloudflare] Purge request: Sweep result update | Strategy: files | URLs: 5
+[10/12/2025, 7:10:22 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/sweep, https://sg.pwedeh.com/singapore/sweep/history, https://sg.pwedeh.com/singapore/sweep/2025-12-03
+[10/12/2025, 7:10:22 pm] [INFO] Inserted new Sweep draw 1084
+[10/12/2025, 7:10:22 pm] [INFO] [Cloudflare] Purge request: Sweep result update | Strategy: files | URLs: 5
+[10/12/2025, 7:10:23 pm] [INFO] [Cloudflare] Purge SUCCESS: https://sg.pwedeh.com/, https://sg.pwedeh.com/sitemap.xml, https://sg.pwedeh.com/singapore/sweep, https://sg.pwedeh.com/singapore/sweep/history, https://sg.pwedeh.com/singapore/sweep/2025-11-05
+[10/12/2025, 7:10:23 pm] [INFO] Scraping completed. Processed 30 draws. Cloudflare cache purged.

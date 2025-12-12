@@ -1,4 +1,11 @@
-import { FourDResult } from "@/components/results/FourD";
+﻿import { FourDResult } from "@/components/results/FourD";
+import { constructMetadata } from "@/lib/metadata";
+
+export const metadata = constructMetadata({
+    title: "4D Results Today - SG Lotto",
+    description: "Latest 4D Results Today",
+    path: "/4d/today",
+});
 import pool from "@/lib/db";
 import { FourDModel } from "@/lib/types";
 import { Calendar } from "lucide-react";

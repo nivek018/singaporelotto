@@ -96,7 +96,7 @@ function calculateTotoStats(results: TotoModel[]) {
             drawNo: res.drawNo,
             drawDate: res.drawDate,
             amount: res.winningShares[0]?.prizeAmount || 0,
-            winners: res.winningShares[0]?.numberOfWinners || 0
+            winners: res.winningShares[0]?.count || 0
         }))
         .sort((a, b) => new Date(a.drawDate).getTime() - new Date(b.drawDate).getTime());
 
