@@ -15,7 +15,7 @@ declare global {
     }
 }
 
-// Fixed height container to prevent CLS
+// Fixed height container to prevent CLS with theme-aware background
 export function AdSense({ slot, format = "auto", responsive = true, className = "" }: AdSenseProps) {
     const adRef = useRef<HTMLModElement>(null);
     const isLoaded = useRef(false);
@@ -30,16 +30,19 @@ export function AdSense({ slot, format = "auto", responsive = true, className = 
                 isLoaded.current = true;
             }
         } catch (err) {
-            console.error("AdSense error:", err);
+            // Silently ignore AdSense errors (ads not loaded yet, blocked, etc.)
         }
     }, []);
 
     return (
-        <div className={`ad-container ${className}`} style={{ minHeight: "100px" }}>
+        <div
+            className={`ad-container bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden ${className}`}
+            style={{ minHeight: "100px" }}
+        >
             <ins
                 ref={adRef}
                 className="adsbygoogle"
-                style={{ display: "block" }}
+                style={{ display: "block", background: "inherit" }}
                 data-ad-client="ca-pub-3980043434451295"
                 data-ad-slot={slot}
                 data-ad-format={format}

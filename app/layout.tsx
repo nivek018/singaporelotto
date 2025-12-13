@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { DelayedScripts } from "@/components/DelayedScripts";
+import { SuppressHydrationWarning } from "@/components/SuppressHydrationWarning";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,7 +33,9 @@ export default function RootLayout({
           <Footer />
         </ThemeProvider>
         <DelayedScripts />
+        <SuppressHydrationWarning />
       </body>
     </html>
   );
 }
+

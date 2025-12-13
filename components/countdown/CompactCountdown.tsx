@@ -83,11 +83,8 @@ export function CompactCountdown({ nextDrawDate, drawTime, gameType, serverTime,
     }, [nextDrawDate, drawTime, serverTime]);
 
     const colors = gameColors[gameType];
-    const nextDate = new Date(nextDrawDate);
-    const dayName = nextDate.toLocaleDateString('en-US', { weekday: 'short' });
-    const formattedDate = nextDate.toLocaleDateString('en-SG', { day: 'numeric', month: 'short' });
 
-    // Skeleton with fixed dimensions to prevent CLS
+    // Skeleton with fixed dimensions to prevent CLS - don't show any dynamic content
     if (!mounted || !timeRemaining) {
         return (
             <div className="flex flex-col items-center sm:flex-row sm:items-center sm:justify-between gap-2 min-h-[52px]">
@@ -98,9 +95,7 @@ export function CompactCountdown({ nextDrawDate, drawTime, gameType, serverTime,
                             Next Draw:
                         </span>
                     </div>
-                    <span className={`text-sm font-bold ${colors.text}`}>
-                        {dayName}, {formattedDate} • {drawTime.replace(' SGT', '')}
-                    </span>
+                    <div className="w-32 h-5 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"></div>
                 </div>
                 <div className="flex items-center gap-2">
                     <div className="w-8 h-6 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"></div>
@@ -111,6 +106,10 @@ export function CompactCountdown({ nextDrawDate, drawTime, gameType, serverTime,
         );
     }
 
+    // Only calculate date formatting after mounted to avoid hydration mismatch
+    const nextDate = new Date(nextDrawDate);
+    const dayName = nextDate.toLocaleDateString('en-US', { weekday: 'short' });
+    const formattedDate = nextDate.toLocaleDateString('en-SG', { day: 'numeric', month: 'short' });
     const isDrawDay = timeRemaining.days === 0 && timeRemaining.total > 0;
 
     return (

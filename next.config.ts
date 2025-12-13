@@ -46,6 +46,18 @@ const nextConfig: NextConfig = {
                             "base-uri 'self'",
                             "form-action 'self'"
                         ].join('; ')
+                    },
+                    {
+                        key: 'Strict-Transport-Security',
+                        value: 'max-age=31536000; includeSubDomains; preload' // HSTS - force HTTPS for 1 year
+                    },
+                    {
+                        key: 'Cross-Origin-Opener-Policy',
+                        value: 'same-origin-allow-popups' // COOP - isolate browsing context but allow popups for ads
+                    },
+                    {
+                        key: 'Cross-Origin-Embedder-Policy',
+                        value: 'unsafe-none' // COEP - relaxed to allow third-party resources (ads)
                     }
                 ]
             }
