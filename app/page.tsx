@@ -41,6 +41,8 @@ import { constructMetadata } from "@/lib/metadata";
 export const revalidate = 0;
 
 export const metadata = constructMetadata({
+  title: "Latest Singapore 4D, TOTO & Sweep Results | SG Lotto Results",
+  description: "Check the latest Singapore Pools 4D, TOTO, and Singapore Sweep lottery results. Live updates, winning numbers, prize breakdowns, and draw schedules. Updated after every draw.",
   path: "/",
 });
 
