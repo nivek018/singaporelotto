@@ -8,6 +8,7 @@ import { getGamePageTitle, shouldShowPlaceholder, getSchedule, getNextDrawDate, 
 import { NextDrawCountdown } from "@/components/countdown/NextDrawCountdown";
 import { Clock, Flame } from "lucide-react";
 import { PastDrawResults } from "@/components/PastDrawResults";
+import { ResponsiveAd } from "@/components/ads/AdSense";
 
 export async function generateMetadata(): Promise<Metadata> {
     const title = await getGamePageTitle('Toto');
@@ -87,6 +88,11 @@ export default async function TotoPage({ searchParams }: { searchParams: Promise
                     </p>
                 </div>
             </section>
+
+            {/* Ad below hero */}
+            <div className="max-w-4xl mx-auto px-4 pt-6">
+                <ResponsiveAd />
+            </div>
 
             <div className="max-w-4xl mx-auto px-4 py-8 space-y-12">
                 {/* Next Draw Countdown */}
@@ -175,6 +181,9 @@ export default async function TotoPage({ searchParams }: { searchParams: Promise
                     </div>
                 </section>
 
+                {/* Ad above Statistics */}
+                <ResponsiveAd />
+
                 {/* Statistics (Client Component) */}
                 <TotoStats initialStats={stats} />
 
@@ -201,6 +210,9 @@ export default async function TotoPage({ searchParams }: { searchParams: Promise
                         </div>
                     </div>
                 </section>
+
+                {/* Ad above Prize Structure */}
+                <ResponsiveAd />
 
                 {/* How to Play Section */}
                 <section className="mt-12">
@@ -441,6 +453,11 @@ export default async function TotoPage({ searchParams }: { searchParams: Promise
                         </div>
                     </div>
                 </section>
+            </div>
+
+            {/* Ad above Past Draw Results */}
+            <div className="max-w-4xl mx-auto px-4 pb-6">
+                <ResponsiveAd />
             </div>
 
             {/* Past Draw Results */}

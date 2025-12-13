@@ -5,6 +5,7 @@ import { FourDModel } from "@/lib/types";
 import { notFound } from "next/navigation";
 import { PastDrawResults } from "@/components/PastDrawResults";
 import { Calendar, Hash, Clock, ArrowLeft, ArrowRight, Info } from "lucide-react";
+import { ResponsiveAd } from "@/components/ads/AdSense";
 
 interface PageProps {
     params: Promise<{ date: string }>;
@@ -83,9 +84,17 @@ export default async function FourDDatePage({ params }: PageProps) {
                 </div>
             </section>
 
+            {/* Ad below hero */}
+            <div className="max-w-4xl mx-auto px-4 pt-6">
+                <ResponsiveAd />
+            </div>
+
             <div className="max-w-4xl mx-auto px-4 py-8">
                 {/* Full Result */}
                 <FourDResult data={result} />
+
+                {/* Ad above About This Draw */}
+                <ResponsiveAd className="mt-8" />
 
                 {/* About This Draw */}
                 <section className="mt-8 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-800/50 rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
@@ -121,6 +130,11 @@ export default async function FourDDatePage({ params }: PageProps) {
                         <ArrowRight className="w-4 h-4" />
                     </a>
                 </div>
+            </div>
+
+            {/* Ad above Past Draw Results */}
+            <div className="max-w-4xl mx-auto px-4 pb-6">
+                <ResponsiveAd />
             </div>
 
             {/* Past Draw Results */}

@@ -3,6 +3,7 @@ import pool from "@/lib/db";
 import { ScheduleModel } from "@/lib/types";
 import { Calendar, Clock, Timer, Ticket, Target, Gift } from "lucide-react";
 import { PastDrawResults } from "@/components/PastDrawResults";
+import { ResponsiveAd } from "@/components/ads/AdSense";
 
 export const metadata = constructMetadata({
     title: "Draw Schedule - SG Lotto",
@@ -63,6 +64,11 @@ export default async function SchedulePage() {
                     </p>
                 </div>
             </section>
+
+            {/* Ad below hero */}
+            <div className="max-w-4xl mx-auto px-4 pt-6">
+                <ResponsiveAd />
+            </div>
 
             {/* Quick Overview */}
             <section className="max-w-6xl mx-auto px-4 -mt-8 relative z-20">
@@ -190,6 +196,11 @@ export default async function SchedulePage() {
                 ))}
             </section>
 
+            {/* Ad above Important Information */}
+            <div className="max-w-4xl mx-auto px-4 pt-6">
+                <ResponsiveAd />
+            </div>
+
             {/* Additional Information */}
             <section className="bg-gray-50 dark:bg-gray-800/50 py-12 px-4">
                 <div className="max-w-4xl mx-auto">
@@ -307,6 +318,11 @@ export default async function SchedulePage() {
                     </a>
                 </div>
             </section>
+
+            {/* Ad above Past Draw Results */}
+            <div className="max-w-4xl mx-auto px-4 pb-6">
+                <ResponsiveAd />
+            </div>
 
             {/* Past Draw Results */}
             <PastDrawResults />

@@ -93,12 +93,11 @@ export default async function SweepHistoryPage({ searchParams }: { searchParams:
                 </div>
             </section>
 
-            {/* Ad below hero */}
-            <div className="max-w-6xl mx-auto px-4 pt-6">
-                <ResponsiveAd />
-            </div>
-
             <div className="max-w-6xl mx-auto px-4 py-8">
+                {/* Ad below hero */}
+                <div className="mb-6">
+                    <ResponsiveAd />
+                </div>
 
                 {/* Date Range Search */}
                 <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-4 mb-6">

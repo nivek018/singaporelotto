@@ -3,6 +3,7 @@ import pool from "@/lib/db";
 import { formatCurrency } from "@/lib/utils";
 import { Trophy, TrendingUp, Calendar, Sparkles, HelpCircle, Info, DollarSign } from "lucide-react";
 import { PastDrawResults } from "@/components/PastDrawResults";
+import { ResponsiveAd } from "@/components/ads/AdSense";
 
 export const metadata = constructMetadata({
     title: "Jackpot Prizes - SG Lotto Results",
@@ -70,6 +71,11 @@ export default async function JackpotPage() {
                     </p>
                 </div>
             </section>
+
+            {/* Ad below hero */}
+            <div className="max-w-4xl mx-auto px-4 pt-6">
+                <ResponsiveAd />
+            </div>
 
             <div className="max-w-4xl mx-auto px-4 py-12">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -196,6 +202,9 @@ export default async function JackpotPage() {
                     </div>
                 </div>
 
+                {/* Ad above Prize Tiers */}
+                <ResponsiveAd />
+
                 {/* How Jackpots Work Section */}
                 <section className="mt-12">
                     <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
@@ -318,6 +327,11 @@ export default async function JackpotPage() {
                         </a>
                     </div>
                 </section>
+            </div>
+
+            {/* Ad above Past Draw Results */}
+            <div className="max-w-4xl mx-auto px-4 pb-6">
+                <ResponsiveAd />
             </div>
 
             {/* Past Draw Results */}

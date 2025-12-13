@@ -10,8 +10,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://sglottoresult.com"),
-  title: "SG Lotto Results",
-  description: "Latest Singapore Lottery Results",
+  title: "Singapore Lotto Results - 4D, TOTO & Sweep | SG Lotto",
+  description: "Get the latest Singapore Pools lottery results for 4D, TOTO, and Singapore Sweep. Live updates, past results history, statistics, and jackpot information.",
 };
 
 export default function RootLayout({
