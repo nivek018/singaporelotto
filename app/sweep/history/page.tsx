@@ -102,7 +102,7 @@ export default async function SweepHistoryPage({ searchParams }: { searchParams:
                 {/* Date Range Search */}
                 <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-4 mb-6">
                     <form className="flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-end">
-                        <div className="grid grid-cols-2 sm:flex gap-3 sm:gap-4 flex-1">
+                        <div className="grid grid-cols-2 sm:flex gap-3 sm:gap-4">
                             <DateInput name="from" label="From Date" defaultValue={from} />
                             <DateInput name="to" label="To Date" defaultValue={to} />
                         </div>
@@ -122,10 +122,6 @@ export default async function SweepHistoryPage({ searchParams }: { searchParams:
                                     Clear
                                 </a>
                             )}
-                        </div>
-                        {/* Desktop Ad in empty space */}
-                        <div className="hidden lg:block flex-1 min-w-[200px]">
-                            <ResponsiveAd />
                         </div>
                     </form>
                 </div>
