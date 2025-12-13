@@ -105,6 +105,43 @@ export default async function Home() {
         </div>
 
         <div className="space-y-8">
+          {/* Toto Section */}
+          <section>
+            {toto ? (
+              <div className="rounded-xl overflow-hidden shadow-xl">
+                <TotoResult
+                  data={toto}
+                  countdown={scheduleToto && (
+                    <CompactCountdown
+                      nextDrawDate={nextDrawToto.toISOString()}
+                      drawTime={totoDrawTimeInfo.isCascade ? `${totoDrawTimeInfo.drawTime.replace(':', ':')} PM` : scheduleToto.draw_time}
+                      gameType="Toto"
+                      serverTime={serverTime}
+                      isCascade={totoDrawTimeInfo.isCascade}
+                    />
+                  )}
+                />
+                {/* Links Footer */}
+                <div className="bg-blue-50 dark:bg-gray-800 border-t-2 border-blue-400 dark:border-blue-600 px-4 py-3 sm:px-5 sm:py-4">
+                  <div className="flex justify-between items-center gap-2">
+                    <Link href="/toto" className="flex-1 sm:flex-none text-center sm:text-left py-2 px-3 sm:px-0 sm:py-0 bg-blue-500 sm:bg-transparent rounded-lg sm:rounded-none text-xs sm:text-sm font-semibold sm:font-medium text-white sm:text-blue-700 dark:text-white sm:dark:text-blue-400 hover:bg-blue-600 sm:hover:bg-transparent hover:text-white sm:hover:text-blue-900 dark:hover:text-blue-300 flex items-center justify-center sm:justify-start gap-1.5 transition-colors">
+                      <ChevronRight className="w-4 h-4 hidden sm:block" />
+                      <span className="sm:hidden">View Page</span>
+                      <span className="hidden sm:inline">View Toto Results Page</span>
+                    </Link>
+                    <Link href="/toto/history" className="flex-1 sm:flex-none text-center sm:text-left py-2 px-3 sm:px-0 sm:py-0 bg-gray-600 sm:bg-transparent dark:bg-gray-600 sm:dark:bg-transparent rounded-lg sm:rounded-none text-xs sm:text-sm font-semibold sm:font-normal text-white sm:text-gray-600 dark:text-white sm:dark:text-gray-400 hover:bg-gray-700 sm:hover:bg-transparent hover:text-white sm:hover:text-blue-700 dark:hover:text-blue-400 flex items-center justify-center sm:justify-start gap-1.5 transition-colors">
+                      <History className="w-4 h-4" />
+                      <span className="sm:hidden">History</span>
+                      <span className="hidden sm:inline">Toto Results History</span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="text-center py-10 text-gray-500 bg-white dark:bg-gray-800 rounded-xl shadow-sm">No Toto results found.</div>
+            )}
+          </section>
+
           {/* 4D Section */}
           <section>
             {fourD ? (
@@ -174,42 +211,6 @@ export default async function Home() {
               </div>
             ) : (
               <div className="text-center py-10 text-gray-500 bg-white dark:bg-gray-800 rounded-xl shadow-sm">No Sweep results found.</div>
-            )}
-          </section>
-          {/* Toto Section */}
-          <section>
-            {toto ? (
-              <div className="rounded-xl overflow-hidden shadow-xl">
-                <TotoResult
-                  data={toto}
-                  countdown={scheduleToto && (
-                    <CompactCountdown
-                      nextDrawDate={nextDrawToto.toISOString()}
-                      drawTime={totoDrawTimeInfo.isCascade ? `${totoDrawTimeInfo.drawTime.replace(':', ':')} PM` : scheduleToto.draw_time}
-                      gameType="Toto"
-                      serverTime={serverTime}
-                      isCascade={totoDrawTimeInfo.isCascade}
-                    />
-                  )}
-                />
-                {/* Links Footer */}
-                <div className="bg-blue-50 dark:bg-gray-800 border-t-2 border-blue-400 dark:border-blue-600 px-4 py-3 sm:px-5 sm:py-4">
-                  <div className="flex justify-between items-center gap-2">
-                    <Link href="/toto" className="flex-1 sm:flex-none text-center sm:text-left py-2 px-3 sm:px-0 sm:py-0 bg-blue-500 sm:bg-transparent rounded-lg sm:rounded-none text-xs sm:text-sm font-semibold sm:font-medium text-white sm:text-blue-700 dark:text-white sm:dark:text-blue-400 hover:bg-blue-600 sm:hover:bg-transparent hover:text-white sm:hover:text-blue-900 dark:hover:text-blue-300 flex items-center justify-center sm:justify-start gap-1.5 transition-colors">
-                      <ChevronRight className="w-4 h-4 hidden sm:block" />
-                      <span className="sm:hidden">View Page</span>
-                      <span className="hidden sm:inline">View Toto Results Page</span>
-                    </Link>
-                    <Link href="/toto/history" className="flex-1 sm:flex-none text-center sm:text-left py-2 px-3 sm:px-0 sm:py-0 bg-gray-600 sm:bg-transparent dark:bg-gray-600 sm:dark:bg-transparent rounded-lg sm:rounded-none text-xs sm:text-sm font-semibold sm:font-normal text-white sm:text-gray-600 dark:text-white sm:dark:text-gray-400 hover:bg-gray-700 sm:hover:bg-transparent hover:text-white sm:hover:text-blue-700 dark:hover:text-blue-400 flex items-center justify-center sm:justify-start gap-1.5 transition-colors">
-                      <History className="w-4 h-4" />
-                      <span className="sm:hidden">History</span>
-                      <span className="hidden sm:inline">Toto Results History</span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div className="text-center py-10 text-gray-500 bg-white dark:bg-gray-800 rounded-xl shadow-sm">No Toto results found.</div>
             )}
           </section>
         </div>

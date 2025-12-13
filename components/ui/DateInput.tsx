@@ -8,7 +8,7 @@ interface DateInputProps {
 
 export function DateInput({ name, label, defaultValue }: DateInputProps) {
     return (
-        <div className="flex-1 min-w-[140px]">
+        <div className="min-w-[140px] max-w-[180px]">
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 {label}
             </label>

@@ -43,28 +43,30 @@ export function TotoResult({ data, countdown }: { data: TotoModel; countdown?: R
                     </div>
                 </div>
 
-                <div className="overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700">
+                <div className="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
                     <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
-                                <th className="px-6 py-3">Group</th>
-                                <th className="px-6 py-3 text-right">Prize Amount</th>
-                                <th className="px-6 py-3 text-right">Winners</th>
+                                <th className="px-3 sm:px-6 py-3">Group</th>
+                                <th className="px-3 sm:px-6 py-3 text-right">Prize Amount</th>
+                                <th className="px-3 sm:px-6 py-3 text-right">Winners</th>
                             </tr>
                         </thead>
                         <tbody>
                             {data.winningShares.map((share, i) => (
                                 <tr key={i} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-                                    <td className="px-6 py-4 font-medium text-gray-900 dark:text-white flex items-center gap-2">
-                                        <Trophy className={`w-4 h-4 ${i === 0 ? 'text-yellow-500' : i === 1 ? 'text-gray-400' : i === 2 ? 'text-orange-400' : 'text-gray-300'}`} />
-                                        {share.group}
+                                    <td className="px-3 sm:px-6 py-3 sm:py-4 font-medium text-gray-900 dark:text-white">
+                                        <div className="flex items-center gap-1 sm:gap-2">
+                                            <Trophy className={`w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0 ${i === 0 ? 'text-yellow-500' : i === 1 ? 'text-gray-400' : i === 2 ? 'text-orange-400' : 'text-gray-300'}`} />
+                                            <span className="text-xs sm:text-sm">{share.group}</span>
+                                        </div>
                                     </td>
-                                    <td className="px-6 py-4 text-right font-mono font-medium text-gray-900 dark:text-gray-200">
+                                    <td className="px-3 sm:px-6 py-3 sm:py-4 text-right font-mono font-medium text-gray-900 dark:text-gray-200 text-xs sm:text-sm">
                                         {formatCurrency(share.prizeAmount)}
                                     </td>
-                                    <td className="px-6 py-4 text-right">
+                                    <td className="px-3 sm:px-6 py-3 sm:py-4 text-right text-xs sm:text-sm">
                                         <div className="flex items-center justify-end gap-1">
-                                            <Users className="w-3 h-3 text-gray-400" />
+                                            <Users className="w-3 h-3 text-gray-400 hidden sm:block" />
                                             {share.count.toLocaleString()}
                                         </div>
                                     </td>

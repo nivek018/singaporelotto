@@ -109,25 +109,25 @@ export default async function SweepPage({ searchParams }: { searchParams: Promis
                 {/* Recent Results Table */}
                 <section>
                     <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Recent Results</h2>
-                    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border border-gray-200 dark:border-gray-700">
+                    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-x-auto border border-gray-200 dark:border-gray-700">
                         <table className="w-full text-sm text-left">
                             <thead className="bg-gray-50 dark:bg-gray-700/50 text-gray-500 dark:text-gray-400 font-medium">
                                 <tr>
-                                    <th className="px-6 py-4">Draw Date</th>
-                                    <th className="px-6 py-4">1st Prize</th>
-                                    <th className="px-6 py-4">2nd Prize</th>
-                                    <th className="px-6 py-4">3rd Prize</th>
+                                    <th className="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm">Draw Date</th>
+                                    <th className="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm">1st Prize</th>
+                                    <th className="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm">2nd Prize</th>
+                                    <th className="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm">3rd Prize</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                                 {recent.map((res) => (
                                     <tr key={res.drawNo} className="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
-                                        <td className="px-6 py-4 font-medium text-gray-900 dark:text-white">
+                                        <td className="px-3 sm:px-6 py-3 sm:py-4 font-medium text-gray-900 dark:text-white text-xs sm:text-sm whitespace-nowrap">
                                             {new Date(res.drawDate).toLocaleDateString('en-SG', { day: 'numeric', month: 'short', year: 'numeric' })}
                                         </td>
-                                        <td className="px-6 py-4 font-bold text-green-600 dark:text-green-400">{res.winning[0]}</td>
-                                        <td className="px-6 py-4 font-bold text-gray-700 dark:text-gray-300">{res.winning[1]}</td>
-                                        <td className="px-6 py-4 font-bold text-orange-600 dark:text-orange-400">{res.winning[2]}</td>
+                                        <td className="px-3 sm:px-6 py-3 sm:py-4 font-bold text-green-600 dark:text-green-400 text-xs sm:text-sm font-mono">{res.winning[0]}</td>
+                                        <td className="px-3 sm:px-6 py-3 sm:py-4 font-bold text-gray-700 dark:text-gray-300 text-xs sm:text-sm font-mono">{res.winning[1]}</td>
+                                        <td className="px-3 sm:px-6 py-3 sm:py-4 font-bold text-orange-600 dark:text-orange-400 text-xs sm:text-sm font-mono">{res.winning[2]}</td>
                                     </tr>
                                 ))}
                             </tbody>
