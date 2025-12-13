@@ -12,31 +12,36 @@ interface AdSenseProps {
 declare global {
     interface Window {
         adsbygoogle: unknown[];
-        __adsLoaded?: boolean;
     }
 }
 
-// Smart AdSense component that only shows when ad fills
+// Smart AdSense component - doesn't render anything until user interacts AND ad fills
 export function AdSense({ slot, format = "auto", responsive = true, className = "" }: AdSenseProps) {
     const containerRef = useRef<HTMLDivElement>(null);
-    const adRef = useRef<HTMLModElement>(null);
-    const [isVisible, setIsVisible] = useState(false);
-    const [userInteracted, setUserInteracted] = useState(false);
-    const isLoaded = useRef(false);
+    const [shouldRender, setShouldRender] = useState(false);
+    const [adFilled, setAdFilled] = useState(false);
+    const hasInitialized = useRef(false);
 
-    // Wait for user interaction before loading ads
+    // Wait for user interaction before rendering the ad element
     useEffect(() => {
+        if (hasInitialized.current) return;
+
         const handleInteraction = () => {
-            setUserInteracted(true);
-            // Remove listeners after first interaction
+            hasInitialized.current = true;
+            setShouldRender(true);
             events.forEach(event => document.removeEventListener(event, handleInteraction));
         };
 
         const events = ["mousemove", "keydown", "scroll", "touchstart", "click"];
         events.forEach(event => document.addEventListener(event, handleInteraction, { once: true, passive: true }));
 
-        // Fallback: load after 5 seconds even without interaction
-        const timeout = setTimeout(() => setUserInteracted(true), 5000);
+        // Fallback: render after 5 seconds even without interaction
+        const timeout = setTimeout(() => {
+            if (!hasInitialized.current) {
+                hasInitialized.current = true;
+                setShouldRender(true);
+            }
+        }, 5000);
 
         return () => {
             clearTimeout(timeout);
@@ -44,59 +49,56 @@ export function AdSense({ slot, format = "auto", responsive = true, className = 
         };
     }, []);
 
-    // Load ad after user interaction
+    // After rendering, push to adsbygoogle and watch for ad fill
     useEffect(() => {
-        if (!userInteracted || isLoaded.current || !adRef.current) return;
+        if (!shouldRender || !containerRef.current) return;
 
-        try {
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
-            isLoaded.current = true;
-
-            // Watch for ad content to appear
-            const observer = new MutationObserver(() => {
-                if (containerRef.current) {
-                    // Check if ad has actual content (height > 0)
-                    const insElement = containerRef.current.querySelector('ins');
-                    if (insElement && insElement.clientHeight > 0) {
-                        setIsVisible(true);
-                        observer.disconnect();
-                    }
-                }
-            });
-
-            if (containerRef.current) {
-                observer.observe(containerRef.current, {
-                    childList: true,
-                    subtree: true,
-                    attributes: true,
-                    attributeFilter: ['style', 'data-ad-status']
-                });
+        // Small delay to ensure DOM is ready
+        const pushTimeout = setTimeout(() => {
+            try {
+                (window.adsbygoogle = window.adsbygoogle || []).push({});
+            } catch (e) {
+                // Silently ignore
             }
 
-            // Fallback: check after a delay in case observer misses it
-            setTimeout(() => {
+            // Check for ad fill after a delay
+            const checkFill = () => {
                 if (containerRef.current) {
-                    const insElement = containerRef.current.querySelector('ins');
-                    if (insElement && insElement.clientHeight > 0) {
-                        setIsVisible(true);
+                    const ins = containerRef.current.querySelector('ins');
+                    const iframe = containerRef.current.querySelector('iframe');
+
+                    // Ad is filled if there's an iframe with content or ins has height
+                    if ((iframe && iframe.clientHeight > 0) || (ins && ins.clientHeight > 50)) {
+                        setAdFilled(true);
                     }
                 }
-                observer.disconnect();
-            }, 3000);
+            };
 
-            return () => observer.disconnect();
-        } catch (err) {
-            // Silently ignore AdSense errors
-        }
-    }, [userInteracted]);
+            // Check multiple times with increasing delays
+            setTimeout(checkFill, 1000);
+            setTimeout(checkFill, 2000);
+            setTimeout(checkFill, 3000);
+        }, 100);
 
+        return () => clearTimeout(pushTimeout);
+    }, [shouldRender]);
+
+    // Don't render anything until user interacts
+    if (!shouldRender) {
+        return null;
+    }
+
+    // Render but keep hidden until ad fills
     return (
         <div
             ref={containerRef}
-            className={`ad-container transition-all duration-300 ${isVisible ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'} ${className}`}
+            style={{
+                display: adFilled ? 'block' : 'none',
+                minHeight: adFilled ? undefined : 0,
+            }}
+            className={className}
         >
             <ins
-                ref={adRef}
                 className="adsbygoogle"
                 style={{ display: "block" }}
                 data-ad-client="ca-pub-3980043434451295"
@@ -135,4 +137,5 @@ export function ResponsiveAd({ className = "" }: { className?: string }) {
         </div>
     );
 }
+
 
