@@ -34,12 +34,8 @@ export function DelayedScripts() {
                 window.gtag("config", "G-LKG4YZJWV7");
             };
 
-            // Load AdSense
-            const adsScript = document.createElement("script");
-            adsScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3980043434451295";
-            adsScript.async = true;
-            adsScript.crossOrigin = "anonymous";
-            document.head.appendChild(adsScript);
+            // AdSense is now loaded in layout.tsx via next/script for better approval detection
+            // We still delay the actual ad requests in the AdSense component
 
             // Remove event listeners after loading
             events.forEach((event) => {

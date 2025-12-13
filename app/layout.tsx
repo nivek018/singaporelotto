@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/layout/Navbar";
@@ -32,6 +33,13 @@ export default function RootLayout({
           {children}
           <Footer />
         </ThemeProvider>
+        {/* AdSense Script - specific loading strategy for approval */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3980043434451295"
+          crossOrigin="anonymous"
+          strategy="lazyOnload"
+        />
         <DelayedScripts />
         <SuppressHydrationWarning />
       </body>
