@@ -34,6 +34,11 @@ export default function RootLayout({
             gtag('config', 'G-LKG4YZJWV7');
           `}
         </Script>
+        <Script
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3980043434451295"
+          strategy="lazyOnload"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className={inter.className}>
         <ThemeProvider

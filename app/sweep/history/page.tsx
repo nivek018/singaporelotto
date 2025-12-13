@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight, Search, Eye } from "lucide-react";
 import { formatCurrency } from "@/lib/utils";
 import { DateInput } from "@/components/ui/DateInput";
 import { PastDrawResults } from "@/components/PastDrawResults";
+import { ResponsiveAd } from "@/components/ads/AdSense";
 
 export const metadata = constructMetadata({
     title: "Singapore Sweep Results History - SG Lotto",
@@ -92,17 +93,24 @@ export default async function SweepHistoryPage({ searchParams }: { searchParams:
                 </div>
             </section>
 
+            {/* Ad below hero */}
+            <div className="max-w-6xl mx-auto px-4 pt-6">
+                <ResponsiveAd />
+            </div>
+
             <div className="max-w-6xl mx-auto px-4 py-8">
 
                 {/* Date Range Search */}
                 <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-4 mb-6">
-                    <form className="flex flex-col sm:flex-row sm:items-end gap-3">
-                        <DateInput name="from" label="From Date" defaultValue={from} />
-                        <DateInput name="to" label="To Date" defaultValue={to} />
-                        <div className="flex gap-2">
+                    <form className="flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-end">
+                        <div className="grid grid-cols-2 sm:flex gap-3 sm:gap-4 flex-1">
+                            <DateInput name="from" label="From Date" defaultValue={from} />
+                            <DateInput name="to" label="To Date" defaultValue={to} />
+                        </div>
+                        <div className="flex gap-2 sm:gap-3">
                             <button
                                 type="submit"
-                                className="px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 text-sm font-medium"
+                                className="flex-1 sm:flex-none px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 text-sm font-medium"
                             >
                                 <Search className="w-4 h-4" />
                                 Search
@@ -110,11 +118,15 @@ export default async function SweepHistoryPage({ searchParams }: { searchParams:
                             {(from || to) && (
                                 <a
                                     href="/sweep/history"
-                                    className="px-4 py-2.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors text-center text-sm font-medium"
+                                    className="flex-1 sm:flex-none px-4 py-2.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors text-center text-sm font-medium"
                                 >
                                     Clear
                                 </a>
                             )}
+                        </div>
+                        {/* Desktop Ad in empty space */}
+                        <div className="hidden lg:block flex-1 min-w-[200px]">
+                            <ResponsiveAd />
                         </div>
                     </form>
                 </div>
@@ -286,6 +298,11 @@ export default async function SweepHistoryPage({ searchParams }: { searchParams:
                         </p>
                     </div>
                 </section>
+            </div>
+
+            {/* Ad above Past Draw Results */}
+            <div className="max-w-6xl mx-auto px-4 pb-6">
+                <ResponsiveAd />
             </div>
 
             {/* Past Draw Results */}

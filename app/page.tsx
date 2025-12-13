@@ -9,6 +9,7 @@ import { getSchedule, getNextDrawDate, getTotoDrawTime } from "@/lib/schedule-ut
 import Link from "next/link";
 import { ChevronRight, History } from "lucide-react";
 import { PastDrawResults } from "@/components/PastDrawResults";
+import { ResponsiveAd } from "@/components/ads/AdSense";
 
 async function getLatestResult(type: '4D' | 'Toto' | 'Sweep') {
   try {
@@ -77,6 +78,11 @@ export default async function Home() {
           </p>
         </div>
       </section>
+
+      {/* Ad below hero */}
+      <div className="max-w-4xl mx-auto px-4 pt-6">
+        <ResponsiveAd />
+      </div>
 
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="mb-8 text-center">
@@ -177,6 +183,9 @@ export default async function Home() {
               <div className="text-center py-10 text-gray-500 bg-white dark:bg-gray-800 rounded-xl shadow-sm">No 4D results found.</div>
             )}
           </section>
+
+          {/* Ad above Sweep */}
+          <ResponsiveAd />
 
           {/* Sweep Section */}
           <section>
@@ -290,6 +299,9 @@ export default async function Home() {
           </div>
         </section>
 
+        {/* Ad above FAQs */}
+        <ResponsiveAd className="mt-8" />
+
         {/* FAQ Section */}
         <section className="mt-12">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Frequently Asked Questions</h2>
@@ -348,6 +360,11 @@ export default async function Home() {
             </p>
           </div>
         </section>
+      </div>
+
+      {/* Ad above Past Draw Results */}
+      <div className="max-w-4xl mx-auto px-4 pb-6">
+        <ResponsiveAd />
       </div>
 
       {/* Past Draw Results */}
