@@ -15,7 +15,7 @@ declare global {
     }
 }
 
-// Smart AdSense component - doesn't render anything until user interacts AND ad fills
+// Smart AdSense component - only shows when explicitly filled by AdSense
 export function AdSense({ slot, format = "auto", responsive = true, className = "" }: AdSenseProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const [shouldRender, setShouldRender] = useState(false);
@@ -61,23 +61,32 @@ export function AdSense({ slot, format = "auto", responsive = true, className = 
                 // Silently ignore
             }
 
-            // Check for ad fill after a delay
+            // Strict check for ad fill
             const checkFill = () => {
                 if (containerRef.current) {
                     const ins = containerRef.current.querySelector('ins');
                     const iframe = containerRef.current.querySelector('iframe');
 
-                    // Ad is filled if there's an iframe with content or ins has height
-                    if ((iframe && iframe.clientHeight > 0) || (ins && ins.clientHeight > 50)) {
+                    // CRITICAL: Only show if AdSense explicitly says it's filled or if we have a visible iframe
+                    // We avoid checking ins.clientHeight blindly because AdSense often reserves white space
+                    const status = ins?.getAttribute('data-ad-status');
+
+                    if (status === 'filled') {
+                        setAdFilled(true);
+                    } else if (iframe && iframe.clientHeight > 10) {
+                        // Backup check: if iframe exists and has significant height
                         setAdFilled(true);
                     }
                 }
             };
 
-            // Check multiple times with increasing delays
-            setTimeout(checkFill, 1000);
-            setTimeout(checkFill, 2000);
-            setTimeout(checkFill, 3000);
+            // Check periodically
+            const interval = setInterval(checkFill, 1000);
+
+            // Stop checking after 10 seconds
+            setTimeout(() => clearInterval(interval), 10000);
+
+            return () => clearInterval(interval);
         }, 100);
 
         return () => clearTimeout(pushTimeout);
@@ -88,7 +97,8 @@ export function AdSense({ slot, format = "auto", responsive = true, className = 
         return null;
     }
 
-    // Render but keep hidden until ad fills
+    // Render but keep hidden until strictly filled
+    // Force transparent background on ins to prevent white flash
     return (
         <div
             ref={containerRef}
@@ -100,7 +110,7 @@ export function AdSense({ slot, format = "auto", responsive = true, className = 
         >
             <ins
                 className="adsbygoogle"
-                style={{ display: "block" }}
+                style={{ display: "block", background: "transparent" }}
                 data-ad-client="ca-pub-3980043434451295"
                 data-ad-slot={slot}
                 data-ad-format={format}
