@@ -15,12 +15,19 @@ declare global {
     }
 }
 
+// Set this to true once AdSense approves your account
+// This prevents ugly white boxes from showing before approval
+const SHOW_ADS = false;
+
 // Fixed height container to prevent CLS with theme-aware background
 export function AdSense({ slot, format = "auto", responsive = true, className = "" }: AdSenseProps) {
     const adRef = useRef<HTMLModElement>(null);
     const isLoaded = useRef(false);
 
     useEffect(() => {
+        // Don't load ads until approved
+        if (!SHOW_ADS) return;
+
         // Only push ad once per component instance
         if (isLoaded.current) return;
 
@@ -33,6 +40,11 @@ export function AdSense({ slot, format = "auto", responsive = true, className = 
             // Silently ignore AdSense errors (ads not loaded yet, blocked, etc.)
         }
     }, []);
+
+    // Don't render anything until AdSense is approved
+    if (!SHOW_ADS) {
+        return null;
+    }
 
     return (
         <div
@@ -54,6 +66,7 @@ export function AdSense({ slot, format = "auto", responsive = true, className = 
 
 // Desktop-only ad (hidden on mobile)
 export function DesktopAd({ className = "" }: { className?: string }) {
+    if (!SHOW_ADS) return null;
     return (
         <div className={`hidden md:block ${className}`}>
             <AdSense slot="7476720594" />
@@ -63,6 +76,7 @@ export function DesktopAd({ className = "" }: { className?: string }) {
 
 // Mobile-only ad (hidden on desktop)
 export function MobileAd({ className = "" }: { className?: string }) {
+    if (!SHOW_ADS) return null;
     return (
         <div className={`block md:hidden ${className}`}>
             <AdSense slot="8023515505" />
@@ -72,6 +86,7 @@ export function MobileAd({ className = "" }: { className?: string }) {
 
 // Responsive ad that shows appropriate version based on screen size
 export function ResponsiveAd({ className = "" }: { className?: string }) {
+    if (!SHOW_ADS) return null;
     return (
         <div className={className}>
             <DesktopAd />
@@ -79,3 +94,4 @@ export function ResponsiveAd({ className = "" }: { className?: string }) {
         </div>
     );
 }
+
